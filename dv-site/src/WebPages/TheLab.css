@@ -1,0 +1,40 @@
+.lab-header {
+  display: flex;
+  width: auto;
+  justify-content: center;
+  align-items: center;
+  height: 27vw;
+  /*margin: 40px;*/
+  margin: 40px;
+  /*margin: 40px;*/
+}
+.lh-container {
+  display: flex;
+  justify-content: center;
+
+  margin: 0;
+  background-color: rgba(31, 31, 31, 0.8);
+}
+.background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 10vw;
+  background-color: rgba(32, 32, 32, 0.7);
+}
+.lab-container {
+}
+.lab-container h1 {
+  font-size: 2.5vw;
+}
+
+.team-members {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 100vw;
+  background-color: rgb(240, 240, 240);
+}

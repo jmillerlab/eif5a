@@ -1,0 +1,139 @@
+.ring {
+  /*  
+*/
+  /*
+  height: 550px;
+  width: 550px;
+transform: scale(0.6);
+*/
+  transform: scale(0.6);
+  height: 30vw;
+  width: 30vw;
+  border-bottom: 4px dashed white;
+  border-radius: 60%;
+  position: absolute;
+  transition: 1.5s;
+}
+.expanded {
+  font-size: 2.6vw;
+  transition: 0.03s;
+}
+
+.ring-2 {
+  /* height: 470px;
+  width: 470px;*/
+  position: absolute;
+  /*
+  height: 550px;
+  width: 550px;
+   transform: scale(0.6);
+*/
+  transform: scale(0.8);
+  height: 30vw;
+  width: 30vw;
+  transform: scale(0.6);
+  /**/
+  border-bottom: 4px dashed white;
+  border-radius: 50%;
+  transition: 1.5s;
+  /*transform: translate(7.8%, 7.8%);*/
+}
+/*
+.ring:hover {
+}
+*/
+
+.large-font h1.active {
+  transform: rotate(360deg);
+  /*transform: scale(0.95) rotate(360deg);*/
+  /**/
+  color: red;
+  transition: 0.1s;
+}
+
+.box-2:hover .ring {
+  /* transform: scale(0.95);*/
+  transform: scale(0.95) rotate(360deg);
+  /*transform: scale(0.95) rotate(360deg);*/
+  /**/
+  color: red;
+  transition: 1.5s;
+}
+
+.box-2:hover .ring-2 {
+  /* transform: scale(0.8);*/
+  transform: scale(0.8) rotate(-360deg);
+  /*transform: scale(0.8) rotate(-360deg);*/
+  /**/
+  color: red;
+  transition: 1.5s;
+}
+
+.box-2:hover .large-font {
+  /**/
+  transform: scale(1.03);
+  transition: 1s;
+  font-size: 2.6vw;
+  transition: 1s;
+}
+
+.ring-3 {
+  position: absolute;
+  /*height: 390px;
+  width: 390px;*/
+  transform: scale(0.6);
+  height: 30vw;
+  width: 30vw;
+  border: 1px solid white;
+  border-radius: 50%;
+  transition: 1s;
+  /*transform: translate(9%, 9%);*/
+}
+
+.box-2 {
+  transform: translate(0%, -4%);
+  position: relative;
+  display: flex;
+  margin-top: 25px;
+  height: 30vw;
+  width: 30vw;
+  /*
+  width: 600px;
+  height: 550px;
+  */
+  justify-content: center;
+  align-items: center;
+}
+
+.large-font {
+  padding: 30px;
+  font-weight: 400;
+  text-align: center;
+  opacity: 100%;
+  font-size: 2.6vw;
+  transition: 0.03s;
+}
+
+.box-2 a:active {
+  font-size: 2.3vw;
+  transition: 0.03s;
+}
+
+.box-3 {
+  display: flex;
+  width: 100%;
+  height: 33vw;
+  /*
+  height: 560px;
+
+  */
+  justify-content: center;
+  align-items: center;
+}
+.box-1 {
+  display: flex;
+  width: 100%;
+  height: 400px;
+  justify-content: center;
+  align-items: center;
+}
