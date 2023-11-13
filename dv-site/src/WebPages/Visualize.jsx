@@ -1,3 +1,4 @@
+import { color } from "d3";
 import "./visualize.css";
 
 export default function Visualize() {
@@ -5,7 +6,7 @@ export default function Visualize() {
     <div className="visualize-container">
       <div className="vh-container">
         <div className="visualize-header">
-          <h1> Header</h1>
+          <h1>Visualization of Project Data</h1>
         </div>
       </div>
       <div className="vi-container">

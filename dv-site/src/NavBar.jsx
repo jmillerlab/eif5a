@@ -11,7 +11,7 @@ export default function Navbar() {
   </NavLink>*/}
           <ul className="nav-menu">
             <CustomLink to="/homepage">Home</CustomLink>
-            <CustomLink to="/studies">Studies</CustomLink>
+            <CustomLink to="/studies">Project</CustomLink>
             <CustomLink to="/about">About</CustomLink>
             <CustomLink to="/thelab">The Lab</CustomLink>
             <CustomLink to="/visualize">Visualize</CustomLink>

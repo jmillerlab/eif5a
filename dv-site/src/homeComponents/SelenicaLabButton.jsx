@@ -9,7 +9,7 @@ function Plot1() {
         <div className="ring-2"></div>
         <div className="ring"></div>
         <Link to="/about" className="large-font">
-          <a>Selenica Lab</a>
+          <a>Project Name</a>
         </Link>
       </div>
     </div>

@@ -1,10 +1,11 @@
 import "./thelab.css";
+import Slide from "../theLabComponents/Slider";
 
 export default function TheLab() {
   return (
     <div className="lab-container">
       <div className="lh-container">
-        <div className="lab-header"></div>
+        <Slide />
       </div>
       {/*<div className="team-members"></div>*/}
     </div>

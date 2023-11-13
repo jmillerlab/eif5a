@@ -3,7 +3,7 @@ function Plot2() {
   return (
     <div className="p2-container">
       <div className="p2-box">
-        <h1 className="p2-large-font">Mission Statement/What We Are About</h1>
+        <h1 className="p2-large-font">Project Description/What it's About</h1>
         <h3 className="p2-small-font">
           <ul>
             <div>
