@@ -1,0 +1,13 @@
+.image {
+  background-size: 100%;
+  background-image: url(./Bioinformatics-vs-computational-biology.jpg);
+  background-repeat: repeat-y;
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
