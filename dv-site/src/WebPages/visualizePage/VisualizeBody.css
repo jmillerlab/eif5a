@@ -1,0 +1,66 @@
+.body-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align dropdowns to the top */
+  width: auto;
+  height: 85vw;
+  background-color: rgba(255, 255, 255);
+}
+
+.body-box {
+  display: flex;
+  flex-direction: column; /* Align items vertically */
+  justify-content: center;
+  width: 100vw;
+  margin: 4vw;
+  margin-left: 0vw;
+  overflow: hidden;
+}
+
+.drop-down-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  align-items: flex-start; /* Align dropdowns to the top */
+}
+
+.drop-down {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  background-color: rgb(228, 228, 228);
+  color: black;
+  width: 10.5vw;
+  height: 3vw;
+  font-size: 0.9vw;
+  border-radius: 2px;
+  margin: 2vw;
+  margin-top: 7vw;
+  margin-right: 1vw;
+  margin-left: 3vw;
+  border: none;
+  margin-bottom: 10px; /* Adjust spacing */
+  transition: 0.5s;
+  box-shadow: 0px 10px 15px 0px rgba(102, 102, 102, 0.2);
+}
+
+/* Add this line to show the dropdown */
+.drop-down:hover {
+  background-color: rgb(202, 202, 202);
+  box-shadow: 0px 10px 15px 0px rgba(102, 102, 102, 0.2);
+  transition: 0.5s;
+  border: none;
+}
+
+/* Add this line to ensure visibility of the dropdown */
+.drop-down:focus {
+  visibility: visible;
+}
+
+.plot-size {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+  height: 50vw;
+  background-color: rgba(255, 255, 255);
+}
