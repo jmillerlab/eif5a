@@ -14,7 +14,7 @@ export default function Navbar() {
             <CustomLink to="/studies">Publications</CustomLink>
             <CustomLink to="/about">About</CustomLink>
             <CustomLink to="/thelab">The Lab</CustomLink>
-            <CustomLink to="/visualize">Visualize</CustomLink>
+            <CustomLink to="/visualize">Visualizations</CustomLink>
           </ul>
           <div className="hamburger">
             <span className="bar"></span>
