@@ -1,4 +1,3 @@
-import "./visualize.css";
 import VisualizeHero from "./VisualizeHero";
 import VisualizeBody from "./VisualizeBody";
 
