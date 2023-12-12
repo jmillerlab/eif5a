@@ -6,7 +6,7 @@ export default function Visualize() {
     <div className="visualize-container">
       <div className="vh-container">
         <div className="visualize-header">
-          <h1>Visualization of Project Data</h1>
+          <h1>Visualization</h1>
         </div>
       </div>
     </div>

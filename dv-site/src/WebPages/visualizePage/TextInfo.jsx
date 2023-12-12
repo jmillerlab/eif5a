@@ -1,14 +1,13 @@
 import "./textinfo.css";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
-export default function VisualizeInformation() {
+export default function VisualizeInformation({ onClick }) {
   return (
-    <div className="instructions-container">
-      <div className="instructions-box">
-        <div className="instructions-header">
-          <p>Use the dropdown below to visualize a dataset</p>
-        </div>
-      </div>
+    <div className="instructions-container" onClick={onClick}>
+      <Link className="instructions-header">
+        <a>Visualize DEGlist Datasets</a>
+      </Link>
     </div>
   );
 }
