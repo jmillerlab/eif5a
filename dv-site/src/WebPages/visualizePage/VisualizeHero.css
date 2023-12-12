@@ -96,6 +96,7 @@
   height: 0;
   border: 6px solid transparent;
   border-color: #fff transparent transparent transparent;
+  transition: 0.5s;
 }
 
 /* Point the arrow upwards when the select box is open (active): */
