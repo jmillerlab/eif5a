@@ -1,13 +1,11 @@
 import "./textinfo.css";
 import React, { useState } from "react";
 
-export default function VisualizeInformation() {
+export default function VisualizeInformation({ onClick }) {
   return (
-    <div className="instructions-container">
-      <div className="instructions-box">
-        <div className="instructions-header">
-          <p>Use the dropdown below to visualize a dataset</p>
-        </div>
+    <div className="instructions-container" onClick={onClick}>
+      <div className="instructions-header">
+        <p>Visualize DEGlist Datasets</p>
       </div>
     </div>
   );
