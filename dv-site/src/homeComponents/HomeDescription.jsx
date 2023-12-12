@@ -7,15 +7,15 @@ function Plot2() {
         <h3 className="p2-small-font">
           <ul>
             <div>
-              “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-              hendrerit nisi sed sollicitudin pellentesque. Nunc posuere purus
-              rhoncus pulvinar aliquam. Ut aliquet tristique nisl vitae
-              volutpat. Nulla aliquet porttitor venenatis. Donec a dui et dui
-              fringilla consectetur id nec massa. Aliquam erat volutpat. Sed ut
-              dui ut lacus dictum fermentum vel tincidunt neque. Sed sed lacinia
-              lectus. Duis sit amet sodales felis. Duis nunc eros, mattis at dui
-              ac, convallis semper risus. In adipiscing ultrices tellus, in
-              suscipit massa vehicula eu.”
+              The role of eIF5A hypusination must be considered in the context
+              of the cell-type specificity as well as the underlying
+              physiological and/or pathological processes. Our strategy exploits
+              the hypusine loop moiety with seemingly profound impact on TDP-43
+              pathology. Regarding TDP-43 pathology our findings suggest that
+              eIF5A hypusination pathway orchestrates a multifaceted response;
+              eIF5AHyp in worsen TDP-43 accumulation, and Induced eIF5AHyp
+              caused deficits in mitochondrial TCA cycle and ATP production,
+              leading to reduced neurometabolic profile.
             </div>
           </ul>
         </h3>

@@ -73,7 +73,7 @@ transform: scale(0.6);
   /**/
   transform: scale(1.03);
   transition: 1s;
-  font-size: 2.6vw;
+  font-size: 2.1vw;
   transition: 1s;
 }
 
@@ -103,6 +103,7 @@ transform: scale(0.6);
   */
   justify-content: center;
   align-items: center;
+  transition: 1s;
 }
 
 .large-font {
@@ -110,12 +111,12 @@ transform: scale(0.6);
   font-weight: 400;
   text-align: center;
   opacity: 100%;
-  font-size: 2.6vw;
-  transition: 0.03s;
+  font-size: 2vw;
+  transition: 1s;
 }
 
 .box-2 a:active {
-  font-size: 2.3vw;
+  font-size: 1.7vw;
   transition: 0.03s;
 }
 
