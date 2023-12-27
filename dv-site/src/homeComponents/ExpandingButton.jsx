@@ -1,16 +1,13 @@
 import "./ExpandingButton.css";
 
-function Component4() {
+function Component4(props) {
   return (
     <div href="" className="c1-box">
       <div className="title-box">
-        <h1 className="hover-title">Some Info</h1>
+        <h1 className="hover-title">{props.tab}</h1>
       </div>
 
-      <p className="hover-text">
-        Some information and visualiztion about WT-EC if the user wants to learn
-        more
-      </p>
+      <p className="hover-text">Link to pages that provide more information</p>
     </div>
   );
 }

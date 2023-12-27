@@ -7,10 +7,10 @@ function Plot3() {
       <div className="p3-box">
         <div className="p3-large-font">Learn More</div>
         <div className="buttons-container">
-          <ExpandingButton />
-          <ExpandingButton />
-          <ExpandingButton />
-          <ExpandingButton />
+          <ExpandingButton tab="Publications" />
+          <ExpandingButton tab="About" />
+          <ExpandingButton tab="Lab" />
+          <ExpandingButton tab="Visualizations" />
         </div>
       </div>
     </div>

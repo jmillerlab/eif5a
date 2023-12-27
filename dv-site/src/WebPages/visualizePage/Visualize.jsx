@@ -1,6 +1,6 @@
 import VisualizeHero from "./VisualizeHero";
 import VisualizeBody from "./VisualizeBody";
-import VisualizeInformation from "./TextInfo";
+import VisualizeInformation from "./DEGListVisButton";
 
 export default function Visualize() {
   return (

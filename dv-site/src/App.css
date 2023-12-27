@@ -1,6 +1,7 @@
 .image {
   background-size: 100%;
   background-image: url(./Bioinformatics-vs-computational-biology.jpg);
+  min-width: 700px;
   background-repeat: repeat-y;
 }
 

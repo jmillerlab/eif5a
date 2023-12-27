@@ -9,7 +9,7 @@ function Plot1() {
         <div className="ring-2"></div>
         <div className="ring"></div>
         <Link to="/about" className="large-font">
-          <a>The role of eIF5A hypusination​</a>
+          <a>The Role of eIF5A Hypusination​</a>
         </Link>
       </div>
     </div>

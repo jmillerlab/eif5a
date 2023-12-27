@@ -7,10 +7,7 @@ export default function VolcanoPlots(props) {
   };
 
   return (
-    <div
-      className="plot-size"
-      style={{ width: props.width, height: props.height, overflow: "hidden" }}
-    >
+    <div className="plot-size" style={{ overflow: "hidden" }}>
       <iframe
         title={props.title}
         style={iframeStyle}
