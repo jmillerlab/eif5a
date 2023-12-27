@@ -69,6 +69,15 @@ transform: scale(0.6);
   transition: 1.5s;
 }
 
+.box-2:hover .ring-3 {
+  /* transform: scale(0.8);*/
+  transform: scale(0.63);
+  /*transform: scale(0.8) rotate(-360deg);*/
+  /**/
+  color: red;
+  transition: 1.5s;
+}
+
 .box-2:hover .large-font {
   /**/
   transform: scale(1.03);
@@ -116,7 +125,7 @@ transform: scale(0.6);
 }
 
 .box-2 a:active {
-  font-size: 1.7vw;
+  font-size: 1.9vw;
   transition: 0.03s;
 }
 

@@ -1,6 +1,6 @@
 import Plot from "react-plotly.js";
 
-function Heatmap() {
+function Heatmap(props) {
   const numRows = 15;
   const numColumns = 17;
 
@@ -31,7 +31,7 @@ function Heatmap() {
 
   var config = { responsive: true };
 
-  const layout = {
+  var layout = {
     paper_bgcolor: " rgb(240,240,240)",
     plot_bgcolor: "  rgb(240, 240, 240)",
     title: "Heatmap",
@@ -40,8 +40,8 @@ function Heatmap() {
       color: "black",
     },
 
-    width: 700,
-    height: 600,
+    width: "100%",
+    height: "100%",
   };
 
   return <Plot data={data} layout={layout} config={config} />;

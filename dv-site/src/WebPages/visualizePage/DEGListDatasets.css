@@ -4,7 +4,8 @@
   justify-content: center;
   align-items: center;
   width: auto;
-  height: 20vw;
+  height: 15vw;
+  max-height: 800px;
   background-color: rgb(255, 255, 255);
   transition: height 0.5s;
 }
@@ -14,56 +15,55 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: auto;
+  width: 100%;
+  min-width: 700px;
+  min-height: 815px;
   background-color: rgb(255, 255, 255);
   transition: height 0.5s;
-  height: 70vw; /* Adjust the height as needed when expanded */
+  height: 95vw;
+  transition: 0.5s;
 }
 
+.down-arrow {
+  margin: 0;
+  font-size: 30px; /* Adjust the size as needed */
+  color: black; /* Set the color according to your design */
+  text-align: center;
+  opacity: 50%;
+}
+
+.button-container {
+  margin-bottom: 20px;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+}
 .DEG-box {
   display: flex;
-  flex-direction: column; /* Align items vertically */
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100vw;
   margin-top: 0vw;
+  min-width: 700px;
 
   margin-bottom: 0vw;
   overflow: hidden;
 }
 
-.drop-down-container {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-  align-items: center; /* Align dropdowns to the top */
+.plot-spacing {
+  margin-top: 60px;
 }
 
-.drop-down {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  font-weight: 400;
-  background-color: rgb(228, 228, 228);
-  color: black;
-  width: 10.5vw;
-  height: 3vw;
-  font-size: 0.9vw;
-  border-radius: 2px;
-  margin: 2vw;
-  margin-bottom: 7vw;
-  border: none;
-  transition: 0.5s;
-  box-shadow: 0px 10px 15px 0px rgba(102, 102, 102, 0.2);
-}
+@media only screen and (max-width: 700px) {
+  .DEG-box {
+    width: 100%; /* Make the plots take full width */
+    min-width: auto; /* Reset min-width to allow full width */
+  }
 
-/* Add this line to show the dropdown */
-.drop-down:hover {
-  background-color: rgb(202, 202, 202);
-  box-shadow: 0px 10px 15px 0px rgba(102, 102, 102, 0.2);
-  transition: 0.5s;
-  border: none;
-}
-
-/* Add this line to ensure visibility of the dropdown */
-.drop-down:focus {
-  visibility: visible;
+  .DEG-container {
+    width: 700px;
+  }
 }
