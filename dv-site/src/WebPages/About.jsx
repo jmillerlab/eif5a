@@ -1,6 +1,5 @@
 import "./about.css";
-import PlotlyGraph from "../graphs/PlotlyGraph";
-import HeatmapComponent from "../graphs/HeatmapComponent";
+import VennDiagram from "../graphs/vennDiagrams/VennDiagram";
 export default function About() {
   return (
     <div className="visualize-container">
@@ -9,7 +8,7 @@ export default function About() {
           <h1>Project Overview</h1>
         </div>
       </div>
-      <PlotlyGraph />
+      <VennDiagram />
     </div>
   );
 }

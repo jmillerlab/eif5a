@@ -1,6 +1,4 @@
-import "./plotlygraph.css";
-
-export default function PlotlyGraph(props) {
+export default function VennDiagram(props) {
   const iframeStyle = {
     width: "100%",
     height: "100%",
@@ -8,7 +6,7 @@ export default function PlotlyGraph(props) {
     minWidth: "600px",
   };
 
-  const filePath = `src/graphs/DHS_DOHHvsWT_EC/${props.file}.html`;
+  const filePath = "srcgraphs\vennDiagrams\venn_diagram_interactive.html";
 
   return (
     <div className="plot-size">

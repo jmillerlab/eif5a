@@ -1,47 +1,38 @@
-import pandas as pd     #(version 1.0.0)
-import plotly           #(version 4.5.0) #pip install plotly==4.5.0
-import plotly.express as px
-import plotly.io as pio
-import statsmodels.api as sm
+import matplotlib.pyplot as plt
+from matplotlib_venn import venn2
+import plotly.graph_objects as go
+from PIL import Image
 
-# data = pd.read_csv('DHS_DOHHvsWT_EC.all.cancer.csv')
+# Step 1: Create the Venn diagram using matplotlib
+set_A = set([1, 2, 3, 4])
+set_B = set([3, 4, 5, 6])
 
-# 
-def create_scatterplot(csv_path, output_html_path):
-    data = pd.read_csv(csv_path)
-    scatterplot = px.scatter(
-        data_frame=data,
-        x="log2FoldChange",
-        hover_data=["gene_name", "gene_id"],
-        y="-log10(padj)",
-        color="-log10(padj)",
-        opacity=0.65,
-        size_max=13,
+venn_diagram = venn2([set_A, set_B], set_labels=('Set A', 'Set B'))
 
-        # color_continuous_scale=px.colors.sequential.Sunsetdark,      # set marker colors. When color colum is numeric data
-        # color_continuous_midpoint=2,                              # set desired midpoint. When colors=diverging
+# Explicitly show the Matplotlib figure to ensure it is fully rendered
+plt.show()
 
-        
-    )
+# Save the Matplotlib figure as an image
+plt.savefig('venn_diagram.png')
 
-    scatterplot.update_layout(
-        margin=dict(l=20, r=20, t=20, b=20),
-        plot_bgcolor='white',
-        autosize=True,
-    )
+# Step 2: Convert to an interactive plotly figure
+img = Image.open('venn_diagram.png')
 
-    scatterplot.update_xaxes(showgrid=True, gridwidth=0.5, gridcolor='lightgray', zeroline=True, zerolinecolor='lightgray')
-    scatterplot.update_yaxes(showgrid=True, gridwidth=0.5, gridcolor='lightgray')
+fig = go.Figure()
+fig.add_trace(go.Image(z=img))
+fig.update_layout(
+    images=[go.layout.Image(
+        source=img,
+        x=0,
+        sizex=img.width,
+        y=img.height,
+        sizey=img.height,
+        xref="x",
+        yref="y",
+        opacity=1,
+        layer="below",
+    )]
+)
 
-    # Set explicit axis ranges to include zero
-    scatterplot.update_yaxes(range=[data['-log10(padj)'].min(), data['-log10(padj)'].max()])
-
-    pio.write_html(scatterplot, file=output_html_path, full_html=False, include_plotlyjs='cdn')
-
-
-if __name__ == "__main__":
-    create_scatterplot('DHS_DOHHvsWT_EC.all.cancer.csv', 'DHS_DOHHvsWT_EC.all.cancer.html')
-    create_scatterplot('DHS_DOHHvsWT_EC.DEG.all.csv', 'DHS_DOHHvsWT_EC.DEG.all.html')
-    # create_scatterplot('DHS_DOHHvsWT_EC\DHS_DOHHvsWT_EC.all.cancer.csv', 'DHS_DOHHvsWT_EC\DHS_DOHHvsWT_EC.all.cancer.html')
-    # create_scatterplot('DHS_DOHHvsWT_EC\DHS_DOHHvsWT_EC.DEG.all.csv', 'DHS_DOHHvsWT_EC\DHS_DOHHvsWT_EC.DEG.all.html')
-    
+# Save the interactive figure as an HTML file
+fig.write_html('venn_diagram_interactive.html')
