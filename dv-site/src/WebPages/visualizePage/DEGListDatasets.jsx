@@ -1,16 +1,10 @@
 import "./deglistdatasets.css";
 import React, { useState, useEffect } from "react";
-import VolcanoPlots from "./VolcanoPlots";
 import DEGListVisButton from "./DEGListVisButton";
-import DataDescription from "./DataDescription";
 import PlotlyGraph from "../../graphs/PlotlyGraph";
 import Dropdown from "./DropDown";
 
 export default function DEGListDatasets() {
-  {
-    /* */
-  }
-
   const [selected, setSelected] = useState("DHS_DOHHvsWT_EC");
   const [isTextInfoPressed, setIsTextInfoPressed] = useState(false);
 
@@ -67,41 +61,22 @@ export default function DEGListDatasets() {
                   ""
                 )}
                 {selected == "eIF5A_DDvsTar4_EC" ? (
-                  <VolcanoPlots
-                    title={selected}
-                    link="https://app.powerbi.com/reportEmbed?reportId=a3adf32a-b497-46da-a7f1-5854cfec2064&autoAuth=true&ctid=e2304327-1af0-4dee-83fb-c1b2fd6db0bb"
-                  />
+                  <div>eIF5A_DDvsTar4_EC</div>
                 ) : (
                   ""
                 )}
                 {selected == "eIF5A_DDvsWT_EC" ? (
-                  <VolcanoPlots
-                    title={selected}
-                    link="https://app.powerbi.com/reportEmbed?reportId=33fc670c-2686-4982-b249-b9cfe2601cb2&autoAuth=true&ctid=e2304327-1af0-4dee-83fb-c1b2fd6db0bb"
-                  />
+                  <div>eIF5A_DDvsWT_EC</div>
                 ) : (
                   ""
                 )}
-                {selected == "eIF5AvsWT_EC" ? (
-                  <VolcanoPlots
-                    title={selected}
-                    link="https://app.powerbi.com/reportEmbed?reportId=3ebe8ec5-d4cb-4e67-aa7a-00b030772246&autoAuth=true&ctid=e2304327-1af0-4dee-83fb-c1b2fd6db0bb"
-                  />
-                ) : (
-                  ""
-                )}
-                {selected == "Tar4_ECvsWT_EC" ? (
-                  <VolcanoPlots
-                    title={selected}
-                    link="https://app.powerbi.com/reportEmbed?reportId=c4200bed-dc16-4869-b0e6-f8d05f6d4284&autoAuth=true&ctid=e2304327-1af0-4dee-83fb-c1b2fd6db0bb"
-                  />
-                ) : (
-                  ""
-                )}
+                {selected == "eIF5AvsWT_EC" ? <div>eIF5AvsWT_EC</div> : ""}
+                {selected == "Tar4_ECvsWT_EC" ? <div>Tar4_ECvsWT_EC</div> : ""}
               </div>
             </>
           ) : (
-            <div className="down-arrow">&#5167;</div>
+            // <div className="down-arrow">&#5167;</div>
+            <div className="scroll-down"></div>
           )}
         </div>
       </div>
