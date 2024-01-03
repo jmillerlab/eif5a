@@ -16,12 +16,10 @@
   min-height: 35px;
   height: 50px;
   font-size: 15px;
+  margin-top: 30px;
   border-radius: 2px;
-  margin-top: 0.5vw;
-  margin-bottom: 3vw;
   text-align: center;
   border: none;
-  transition: 0.5s;
   box-shadow: 0px 10px 15px 0px rgba(102, 102, 102, 0.2);
 }
 
@@ -29,7 +27,6 @@
 .drop-down:hover {
   background-color: rgb(202, 202, 202);
   box-shadow: 0px 10px 15px 0px rgba(102, 102, 102, 0.2);
-  transition: 0.5s;
   border: none;
 }
 

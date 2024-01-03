@@ -1,31 +1,33 @@
-.visualize-header {
+.about-header {
   display: flex;
   width: auto;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 27vw;
   /*margin: 40px;*/
   margin: 40px;
 }
-.vh-container {
+.about-container {
   display: flex;
   justify-content: center;
   margin: 0;
-  background-color: rgba(31, 31, 31, 0.8);
+  background-color: rgba(31, 31, 31, 0.9);
 }
-.vi-container {
+
+.about-inner-container {
   display: flex;
   justify-content: center;
   margin: 0;
-  background-color: rgba(31, 31, 31, 0.8);
 }
-.visualize-box {
+
+.about-box {
   display: flex;
   width: auto;
   justify-items: center;
   align-items: center;
 }
-.visualize-instructions {
+.about-instructions {
   display: flex;
   width: 100%;
   justify-content: center;
@@ -33,7 +35,7 @@
   height: 50vw;
   background-color: rgb(240, 240, 240);
 }
-.visualize-distribution {
+.about-distribution {
   display: flex;
   width: auto;
   justify-content: center;
@@ -41,8 +43,8 @@
   height: 50vw;
   background-color: rgb(46, 46, 46);
 }
-.visualize-container {
-}
-.visualize-container h1 {
+
+.about-container h1 {
   font-size: 2.5vw;
+  margin: 10px;
 }

@@ -1,8 +1,8 @@
 import VisualizeHero from "./VisualizeHero";
 import VisualizeBody from "./VisualizeBody";
-import VisualizeInformation from "./DEGListVisButton";
-import DEGListDatasets from "./DEGListDatasets";
-import VennVisualizations from "./VennVisualizations";
+import VisualizeInformation from "./DEGvisualizations/DEGListVisButton";
+import DEGListDatasets from "./DEGvisualizations/DEGListDatasets";
+import VennVisualizations from "./VennVisualizations/VennVisualizations";
 import DataDescription from "./DataDescription";
 
 export default function Visualize() {

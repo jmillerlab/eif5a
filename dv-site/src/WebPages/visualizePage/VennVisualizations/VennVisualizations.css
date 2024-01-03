@@ -1,0 +1,62 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  transition: 1s;
+}
+.Venn-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  padding-top: 0%;
+  margin-top: 0vw;
+  min-width: 700px;
+  margin-bottom: 0vw;
+  transition: 1s;
+  min-height: 600px;
+  height: inherit;
+  overflow: hidden;
+}
+
+.plot-spacing {
+  margin: 0px;
+}
+
+@media only screen and (max-width: 700px) {
+  .Venn-box {
+    width: 100%; /* Make the plots take full width */
+    min-width: auto; /* Reset min-width to allow full width */
+  }
+}
+
+.Venn-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: 10vw;
+  background-color: rgb(255, 255, 255);
+  transition: 1s;
+}
+
+.Venn-container-expanded {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: auto;
+  background-color: rgb(255, 255, 255);
+  transition: height 0.5s;
+  height: 40vw;
+  min-height: 750px;
+  max-height: 50vw;
+
+  transition: 0.2s;
+}
+.plot-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
