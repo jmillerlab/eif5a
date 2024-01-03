@@ -1,68 +1,4 @@
-.DEG-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: auto;
-  background-color: rgb(255, 255, 255);
-  transition: height 0.5s;
-}
-
-.DEG-container-expanded {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  min-width: 700px;
-  background-color: rgb(255, 255, 255);
-  transition: height 0.5s;
-  transition: 0.5s;
-}
-
-.down-arrow {
-  margin: 0;
-  font-size: 30px; /* Adjust the size as needed */
-  color: black; /* Set the color according to your design */
-  text-align: center;
-  opacity: 50%;
-}
-
-.button-container {
-  margin-bottom: 20px;
-}
-
-.main-container {
-  display: flex;
-  flex-direction: column;
-}
-.DEG-box {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  margin-top: 0vw;
-  min-width: 700px;
-
-  margin-bottom: 0vw;
-  overflow: hidden;
-}
-
-.plot-spacing {
-  margin-top: 60px;
-}
-
-@media only screen and (max-width: 700px) {
-  .DEG-box {
-    width: 100%; /* Make the plots take full width */
-    min-width: auto; /* Reset min-width to allow full width */
-  }
-
-  .DEG-container {
-    /* Remove the fixed width */
-  }
-}
+/*animated scroll arrow animation*/
 .scroll-down {
   left: 50%;
   bottom: 10px;
@@ -85,8 +21,14 @@
   -moz-animation: fade_move_down 4s ease-in-out infinite;
   animation: fade_move_down 4s ease-in-out infinite;
 }
+.down-arrow {
+  margin: 0;
+  font-size: 30px; /* Adjust the size as needed */
+  color: black; /* Set the color according to your design */
+  text-align: center;
+  opacity: 50%;
+}
 
-/*animated scroll arrow animation*/
 @-webkit-keyframes fade_move_down {
   0% {
     -webkit-transform: translate(0, -10px) rotate(45deg);

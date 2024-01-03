@@ -1,5 +1,5 @@
 import "./Navbar.css";
-import { NavLink, useMatch, useResolvedPath } from "react-router-dom";
+import { NavLink, useMatch, useResolvedPath, Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
@@ -14,7 +14,10 @@ export default function Navbar() {
             <CustomLink to="/studies">Publications</CustomLink>
             <CustomLink to="/about">About</CustomLink>
             <CustomLink to="/thelab">The Lab</CustomLink>
-            <CustomLink to="/visualize">Visualizations</CustomLink>
+            <CustomLink to="http://selenicalab.createuky.net/" external>
+              The Lab
+            </CustomLink>
+            <CustomLink to="/visualize">Visualize</CustomLink>
           </ul>
           <div className="hamburger">
             <span className="bar"></span>
@@ -27,11 +30,25 @@ export default function Navbar() {
   );
 }
 
-function CustomLink({ to, children, ...props }) {
-  const resolvedPath = useResolvedPath(to);
-  const isActive = useMatch({ path: resolvedPath.pathname, end: true });
+function CustomLink({ to, children, external, ...props }) {
+  if (external) {
+    return (
+      <li className="nav-item">
+        <a
+          href={to}
+          target="_blank"
+          rel="noopener noreferrer"
+          {...props}
+          className="nav-link"
+        >
+          {children}
+        </a>
+      </li>
+    );
+  }
+
   return (
-    <li className={isActive ? "active-page" : "nav-item"}>
+    <li className="nav-item">
       <NavLink to={to} {...props} className="nav-link">
         {children}
       </NavLink>

@@ -1,0 +1,18 @@
+/* venndiagram.css */
+
+.chartCard {
+  margin-top: 60px;
+  width: 700px;
+  height: 400px;
+  background: rgba(54, 162, 235, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#myChart {
+  width: inherit;
+  height: inherit;
+  border-radius: 20px;
+  background: white;
+}

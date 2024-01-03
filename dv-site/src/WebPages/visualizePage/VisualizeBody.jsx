@@ -1,7 +1,7 @@
 import "./VisualizeBody.css";
 
-import DEGListDatasets from "./DEGListDatasets";
-import VennVisualizations from "./VennVisualizations";
+import DEGListDatasets from "./DEGvisualizations/DEGListDatasets";
+import VennVisualizations from "./VennVisualizations/VennVisualizations";
 import DataDescription from "./DataDescription";
 
 export default function VisualizeBody() {

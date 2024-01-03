@@ -1,14 +1,14 @@
 import "./about.css";
-import VennDiagram from "../graphs/vennDiagrams/VennDiagram";
+// import Venn from "./visualizePage/VennDiagrams";
 export default function About() {
   return (
-    <div className="visualize-container">
-      <div className="vh-container">
-        <div className="visualize-header">
-          <h1>Project Overview</h1>
+    <div className="about-container">
+      <div className="about-inner-container">
+        <div className="about-header">
+          <h1>Project Overview Page</h1>
+          <p>Under Construction</p>
         </div>
       </div>
-      <VennDiagram />
     </div>
   );
 }
