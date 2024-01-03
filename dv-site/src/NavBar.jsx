@@ -13,6 +13,7 @@ export default function Navbar() {
             <CustomLink to="/homepage">Home</CustomLink>
             <CustomLink to="/studies">Publications</CustomLink>
             <CustomLink to="/about">About</CustomLink>
+            <CustomLink to="/thelab">The Lab</CustomLink>
             <CustomLink to="http://selenicalab.createuky.net/" external>
               The Lab
             </CustomLink>
