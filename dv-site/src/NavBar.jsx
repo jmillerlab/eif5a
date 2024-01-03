@@ -1,19 +1,19 @@
 import "./Navbar.css";
 import { NavLink, useMatch, useResolvedPath, Link } from "react-router-dom";
 
+// ... (Other imports)
+
 export default function Navbar() {
   return (
     <>
       <header>
         <nav className="navbar">
-          {/* <NavLink to="/about" className="nav-item">
-            Selenica Lab
-  </NavLink>*/}
           <ul className="nav-menu">
-            <CustomLink to="/homepage">Home</CustomLink>
-            <CustomLink to="/studies">Publications</CustomLink>
+            <CustomLink to="/" exact>
+              Home
+            </CustomLink>
             <CustomLink to="/about">About</CustomLink>
-            <CustomLink to="/thelab">The Lab</CustomLink>
+            <CustomLink to="/studies">Publications</CustomLink>
             <CustomLink to="http://selenicalab.createuky.net/" external>
               The Lab
             </CustomLink>
@@ -30,7 +30,7 @@ export default function Navbar() {
   );
 }
 
-function CustomLink({ to, children, external, ...props }) {
+function CustomLink({ to, children, external, exact, ...props }) {
   if (external) {
     return (
       <li className="nav-item">
@@ -49,7 +49,7 @@ function CustomLink({ to, children, external, ...props }) {
 
   return (
     <li className="nav-item">
-      <NavLink to={to} {...props} className="nav-link">
+      <NavLink to={to} exact={exact} {...props} className="nav-link">
         {children}
       </NavLink>
     </li>

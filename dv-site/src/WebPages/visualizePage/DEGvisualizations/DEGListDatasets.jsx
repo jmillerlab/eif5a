@@ -62,7 +62,13 @@ export default function DEGListDatasets() {
                     </div>
                   </div>
                   <div className="plot-spacing">
-                    <p style={{ color: "black", textAlign: "center" }}>
+                    <p
+                      style={{
+                        color: "black",
+                        textAlign: "center",
+                        marginTop: "60px",
+                      }}
+                    >
                       DHS_DOHHvsWT_EC.cancer
                     </p>
                     <PlotlyGraph file={"DHS_DOHHvsWT_EC.all.cancer"} />

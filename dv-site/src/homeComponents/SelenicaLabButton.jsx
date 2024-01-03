@@ -8,7 +8,7 @@ function Plot1() {
         <div className="ring-3"></div>
         <div className="ring-2"></div>
         <div className="ring"></div>
-        <Link to="/about" className="large-font">
+        <Link to="/visualize" className="large-font">
           <a>The Role of eIF5A Hypusination​</a>
         </Link>
       </div>

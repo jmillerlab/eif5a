@@ -1,4 +1,4 @@
-import "./about.css";
+import "./aboutPage.css";
 // import Venn from "./visualizePage/VennDiagrams";
 export default function About() {
   return (
