@@ -1,11 +1,17 @@
-import { react, forwardRef } from "react";
-import "./Togglecomponent.css";
+// Updated ToggleSwitch component
+import React from "react";
+import "./togglecomponent.css";
 
-export default function Toggle((props, forwardRef)) {
+export default function ToggleSwitch({ toggleState, onToggle }) {
   return (
-    <label className="cursor-pointer">
-        <input type="checkbox" className="hidden" ref={forwardRef} {...props}></input>
-        <div className=""></div>
-    </label>
+    <span className="switch">
+      <input
+        type="checkbox"
+        checked={toggleState}
+        onChange={onToggle}
+        id="switcher"
+      />
+      <label htmlFor="switcher"></label>
+    </span>
   );
 }
