@@ -38,6 +38,7 @@
   font-weight: 400;
   font-size: medium;
   content: "DEG";
+  /* content: "All Genes"; */
   left: 35px;
 }
 
@@ -48,6 +49,7 @@
 
   font-size: medium;
   content: "CANCER";
+  /* content: "KEGG Pathways"; */
   right: 25px;
 }
 
