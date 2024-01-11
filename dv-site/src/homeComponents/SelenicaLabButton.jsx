@@ -17,7 +17,3 @@ function Plot1() {
 }
 
 export default Plot1;
-{
-  /*
-   */
-}

@@ -13,8 +13,9 @@
   margin-top: 0vw;
   min-width: 700px;
   margin-bottom: 0vw;
+  min-height: 1000px;
+
   transition: 1s;
-  min-height: 600px;
   height: inherit;
   overflow: hidden;
 }
@@ -24,10 +25,6 @@
 }
 
 @media only screen and (max-width: 700px) {
-  .Venn-box {
-    width: 100%; /* Make the plots take full width */
-    min-width: auto; /* Reset min-width to allow full width */
-  }
 }
 
 .Venn-container {
@@ -48,8 +45,8 @@
   width: auto;
   background-color: rgb(255, 255, 255);
   transition: height 0.5s;
-  height: 40vw;
-  min-height: 750px;
+  height: 60vw;
+  min-height: 1050px;
   max-height: 50vw;
 
   transition: 0.6s;

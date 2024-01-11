@@ -1,0 +1,99 @@
+.switch {
+  position: relative;
+  width: 200px;
+  height: 70px;
+  border-radius: 35px; /* Adjusted border-radius */
+  background: rgba(211, 211, 211, 0.9);
+  margin-bottom: 40px;
+  margin-top: 60px;
+}
+
+/* Adjust height for screens less than 700px */
+@media (max-width: 900px) {
+  .switch {
+    height: 50px;
+    min-height: 25px; /* Adjusted height */
+  }
+}
+
+.switch input {
+  appearance: none;
+  border-radius: 35px; /* Adjusted border-radius */
+  background: rgba(211, 211, 211, 0.9);
+  outline: none;
+}
+
+.switch input::before,
+.switch input::after {
+  z-index: 2;
+  position: absolute;
+  top: 50%; /* Centered vertically */
+  transform: translateY(-50%);
+  font-weight: bolder;
+}
+
+.switch input::before {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-size: medium;
+  content: "DEG";
+  left: 35px;
+}
+
+.switch input::after {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-size: medium;
+  content: "CANCER";
+  right: 25px;
+}
+
+.switch input:checked {
+  background: rgba(211, 211, 211, 0.9);
+}
+
+.switch label {
+  z-index: 1;
+  position: absolute;
+  top: 5px;
+  bottom: 4px;
+  border-radius: 35px; /* Adjusted border-radius */
+  box-shadow: 0px 5px 10px 0px rgb(88, 88, 88); /* Adjusted box-shadow */
+  border: 1px solid rgb(78, 78, 78); /* Set border property directly */
+}
+
+.switch input {
+}
+
+.switch input:checked::before {
+  color: white;
+}
+
+.switch input:checked::after {
+  color: black;
+}
+
+.switch input:checked + label {
+  left: 10px;
+  right: 110px;
+  background-color: rgba(107, 107, 107, 0.9);
+  transition: 0.06s;
+}
+
+.switch input:not(:checked)::before {
+  color: rgb(12, 12, 12);
+}
+
+.switch input:not(:checked)::after {
+  color: rgb(255, 255, 255);
+}
+
+.switch input:not(:checked) + label {
+  left: 100px;
+  right: 10px;
+  background-color: rgba(107, 107, 107, 0.9);
+  transition: 0.06s;
+}

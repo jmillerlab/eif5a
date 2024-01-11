@@ -125,7 +125,7 @@ transform: scale(0.6);
 }
 
 .box-2 a:active {
-  font-size: 1.9vw;
+  font-size: 2vw;
   transition: 0.03s;
 }
 
