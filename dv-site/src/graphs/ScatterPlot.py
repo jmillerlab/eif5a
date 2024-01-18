@@ -63,8 +63,6 @@ def create_scatterplot(csv_path, output_html_path):
         color_discrete_map={
             "Non-Significant": "lightslategray",
             "Positive Significant": "blue",
-            # "Negative Significant": "mediumseagreen",
-            # "Positive Significant": "palevioletred"
             "Negative Significant": "red"
         }
     )

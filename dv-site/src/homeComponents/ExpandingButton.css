@@ -1,19 +1,3 @@
-/*
-.p1-box {
-  width: 700px;
-  border: 3px solid #61dafbaa;
-  padding: 50px;
-  margin: auto;
-  border-radius: 50px;
-  background-color: rgb(240, 240, 240);
-  margin-top: 30px;
-  opacity: 80%;
-}
-
-.p1-shadow {
-  box-shadow: inset 0 0 15px black;
-}
-*/
 .c1-container {
   display: flex;
   justify-content: center;
@@ -23,20 +7,29 @@
 .c1-box {
   position: relative;
   justify-content: center;
-  width: 30px;
-  height: 110px;
-  margin: 40px;
+  width: 90px;
+  /* height: 130px; */
+  height: 210px;
+
+  margin: 30px;
   cursor: pointer;
-  padding: 5px 5px 5px 5px;
+  /* padding: 5px 5px 5px 5px; */
+  padding: 0%;
   border-radius: 10px;
   background-color: rgb(240, 240, 240);
   text-align: center;
-  padding: 5%;
-  font-size: 15px;
-  transition: 0.25s;
+  padding-top: 3%;
+  /* padding-left: 1%; */
+  /* padding-right: 1%; */
+  font-size: 18px;
+  transition: 0.7s;
   color: black;
   overflow: hidden;
   width: 100%;
+}
+
+.group-image {
+  transform: scale(0.8);
 }
 
 .c1-large-font {
@@ -55,14 +48,15 @@
 
 .c1-box:hover {
   box-shadow: 0px 10px 15px 0px rgba(182, 182, 182, 0.5);
-  height: 355px;
+  height: 410px;
 }
 .title-box {
   display: flex;
   justify-content: center;
   margin: 0;
   width: 100%;
-  margin-bottom: 40px;
+  height: 30px;
+  margin-bottom: 25px;
   margin-top: 0px;
 }
 .hover-title {
@@ -76,12 +70,93 @@
   font-size: 20px;
 }
 .hover-text {
+  display: flex;
+  justify-content: center;
   margin-top: 5px;
-  width: 100%;
-  text-align: center;
+  width: 120px;
+  /* text-align: center; */
   color: black;
   margin: 0;
   opacity: 70%;
   font-weight: 450;
   font-size: 100%;
+}
+.lower-text {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+@media only screen and (max-width: 768px) {
+  .c1-container {
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+    width: 1400px;
+  }
+  .c1-box {
+    position: relative;
+    justify-content: center;
+    width: 90px;
+    /* height: 130px; */
+    height: 170px;
+
+    margin: 20px;
+    cursor: pointer;
+    /* padding: 5px 5px 5px 5px; */
+    border-radius: 10px;
+    background-color: rgb(240, 240, 240);
+    text-align: center;
+    padding-top: 1%;
+
+    font-size: 18px;
+    transition: 0.7s;
+    color: black;
+    overflow: hidden;
+  }
+
+  .group-image {
+    display: flex;
+    justify-content: center;
+    transform: scale(0.5);
+  }
+
+  .c1-box:hover {
+    box-shadow: 0px 10px 15px 0px rgba(182, 182, 182, 0.7);
+    height: 170px;
+    transition: 0.25s;
+  }
+
+  .title-box {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    width: 100%;
+    height: 30px;
+    margin-bottom: 25px;
+    margin-top: 0px;
+  }
+  .hover-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    opacity: 75%;
+    width: 70px;
+    font-weight: 700;
+    font-size: 18px;
+  }
+  .hover-text {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    width: 80px;
+
+    /* text-align: center; */
+    padding: 0%;
+    color: black;
+    margin: 0;
+    opacity: 70%;
+    font-weight: 450;
+    font-size: 90%;
+  }
 }

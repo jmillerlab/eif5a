@@ -3,7 +3,7 @@ import SelenicaLabButton from "./SelenicaLabButton";
 
 function Plot1() {
   return (
-    <div>
+    <div className="background">
       <div className="p1-container">
         <div className="box">
           <SelenicaLabButton />

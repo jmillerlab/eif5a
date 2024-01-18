@@ -9,6 +9,8 @@ transform: scale(0.6);
   transform: scale(0.6);
   height: 30vw;
   width: 30vw;
+  min-width: 300px;
+  min-height: 300px;
   border-bottom: 4px dashed white;
   border-radius: 60%;
   position: absolute;
@@ -28,6 +30,8 @@ transform: scale(0.6);
   width: 550px;
    transform: scale(0.6);
 */
+  min-width: 300px;
+  min-height: 300px;
   transform: scale(0.8);
   height: 30vw;
   width: 30vw;
@@ -93,6 +97,8 @@ transform: scale(0.6);
   transform: scale(0.6);
   height: 30vw;
   width: 30vw;
+  min-width: 300px;
+  min-height: 300px;
   border: 1px solid white;
   border-radius: 50%;
   transition: 1s;
@@ -104,8 +110,9 @@ transform: scale(0.6);
   position: relative;
   display: flex;
   margin-top: 25px;
-  height: 30vw;
-  width: 30vw;
+  height: auto;
+  width: 100%;
+
   /*
   width: 600px;
   height: 550px;
@@ -129,10 +136,20 @@ transform: scale(0.6);
   transition: 0.03s;
 }
 
+.box-4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 15vw;
+  width: 15vw;
+  min-width: 250px;
+  min-height: 250px;
+}
+
 .box-3 {
   display: flex;
-  width: 100%;
-  height: 33vw;
+  width: 20vw;
+  height: 20;
   /*
   height: 560px;
 
@@ -146,4 +163,16 @@ transform: scale(0.6);
   height: 400px;
   justify-content: center;
   align-items: center;
+}
+@media (max-width: 768px) {
+  .large-font {
+    font-size: 20px;
+  }
+  .box-2:hover .large-font {
+    /**/
+    transform: scale(1.03);
+    transition: 1s;
+    font-size: 20px;
+    transition: 1s;
+  }
 }
