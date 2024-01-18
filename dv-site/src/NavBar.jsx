@@ -1,5 +1,5 @@
 import "./Navbar.css";
-import { NavLink, useMatch, useResolvedPath, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 // ... (Other imports)
 
@@ -19,11 +19,6 @@ export default function Navbar() {
             </CustomLink>
             <CustomLink to="/visualize">Visualize</CustomLink>
           </ul>
-          <div className="hamburger">
-            <span className="bar"></span>
-            <span className="bar"></span>
-            <span className="bar"></span>
-          </div>
         </nav>
       </header>
     </>

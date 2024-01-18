@@ -1,4 +1,5 @@
 import "./plotlygraph.css";
+import { motion as m } from "framer-motion";
 
 export default function PlotlyGraph(props) {
   const iframeStyle = {
@@ -18,7 +19,12 @@ export default function PlotlyGraph(props) {
 
   return (
     <>
-      <div className="plot-size">
+      <m.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.75, ease: "easeOut" }}
+        className="plot-size"
+      >
         <p
           style={{
             color: "black",
@@ -39,7 +45,7 @@ export default function PlotlyGraph(props) {
           navContentPaneEnabled={false}
         />
         ;
-      </div>
+      </m.div>
     </>
   );
 }
