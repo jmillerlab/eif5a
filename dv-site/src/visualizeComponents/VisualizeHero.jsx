@@ -1,4 +1,4 @@
-import "./visualizehero.css";
+import "./VisualizeHero.css";
 import { motion as m } from "framer-motion";
 
 export default function Visualize() {

@@ -1,6 +1,6 @@
 // Updated ToggleSwitch component
 import React from "react";
-import "./togglegraphcomponent.css";
+import "./ToggleGraphComponent.css";
 import { motion as m } from "framer-motion";
 
 export default function ToggleSwitch({ toggleState, onToggle }) {

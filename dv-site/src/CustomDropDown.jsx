@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import "./customdropdown.css";
+import "./CustomDropDown.css";
 import { CSSTransition } from "react-transition-group";
 
 export default function CustomDropDown() {

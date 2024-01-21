@@ -1,4 +1,4 @@
-import "./deglistdatasets.css";
+import "./DEGListDatasets.css";
 import React, { useState, useEffect } from "react";
 import VisualizeButton from "../../generalComponents/ExpandComponentButton";
 import PlotlyGraph from "../../graphs/PlotlyGraph";

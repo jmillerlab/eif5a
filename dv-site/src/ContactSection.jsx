@@ -1,4 +1,4 @@
-import "./Contactsection.css";
+import "./ContactSection.css";
 import LeftContent from "./contactSectionComponents/LeftContent";
 import ContactForm from "./contactSectionComponents/ContactForm";
 import PhoneIcon from "./contactSectionComponents/phone-icon.png";
