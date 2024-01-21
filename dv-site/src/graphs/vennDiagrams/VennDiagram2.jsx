@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Highcharts from "highcharts";
 import VennModule from "highcharts/modules/venn.js";
 import HighchartsReact from "highcharts-react-official";
-import "./venndiagram2.css";
+import "./VennDiagram2.css";
 
 VennModule(Highcharts);
 
