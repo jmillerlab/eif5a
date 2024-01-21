@@ -1,4 +1,4 @@
-import "./aboutPage.css";
+import "./AboutPage.css";
 import CustomDropDown from "../CustomDropDown";
 import { motion as m } from "framer-motion";
 // import Venn from "./visualizePage/VennDiagrams";

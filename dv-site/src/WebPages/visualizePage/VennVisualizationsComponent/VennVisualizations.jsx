@@ -1,4 +1,4 @@
-import "./vennvisualizations.css";
+// import "./vennvisualizations.css";
 import React, { useState, useEffect } from "react";
 import VisualizeButton from "../../../visualizeComponents/Button";
 import Dropdown from "../../../visualizeComponents/DropDown";

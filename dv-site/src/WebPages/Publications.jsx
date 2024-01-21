@@ -1,4 +1,4 @@
-import "./publications.css";
+import "./Publications.css";
 import { motion as m } from "framer-motion";
 
 export default function Publications() {

@@ -1,4 +1,4 @@
-import "./thelab.css";
+import "./TheLab.css";
 
 export default function TheLab() {
   return (

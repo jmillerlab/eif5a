@@ -1,4 +1,4 @@
-import "./plotlygraph.css";
+import "./PlotlyGraph.css";
 import { motion as m } from "framer-motion";
 
 export default function PlotlyGraph(props) {
