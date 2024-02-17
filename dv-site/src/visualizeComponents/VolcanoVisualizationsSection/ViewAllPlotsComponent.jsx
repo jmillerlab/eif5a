@@ -1,6 +1,7 @@
 import "./DEGListDatasets.css";
 import PlotlyGraph from "../../graphs/PlotlyGraph";
 import { motion as m } from "framer-motion";
+import "./ViewAllPlotsComponent";
 
 export default function ViewAllPlotsComponent() {
   const dropdownOptions = [
@@ -22,7 +23,7 @@ export default function ViewAllPlotsComponent() {
   return (
     <div className="plots-grid">
       {dropdownOptions.map((option, index) => (
-        <div key={index} className="plot-item">
+        <div key={index}>
           <PlotlyGraph file={`${option}/${option}.DEG.all`} />
         </div>
       ))}
