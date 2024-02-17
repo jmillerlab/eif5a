@@ -18,7 +18,7 @@ export default function ContactSection() {
             <div className="form-wrapper">
               <div className="left-content">
                 <LeftContent content={"1(205)-628-7519"} icon={PhoneIcon} />
-                <LeftContent content={"johndoe@gmail.com"} icon={EmailIcon} />
+                <LeftContent content={"somemail@gmail.com"} icon={EmailIcon} />
                 <LeftContent
                   content={"University of Kentucky"}
                   icon={LocationIcon}

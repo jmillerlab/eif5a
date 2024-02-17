@@ -5,6 +5,7 @@ import "./VisualizeBody.css";
 import VolcanoSection from "./VolcanoVisualizationsSection/DEGListDatasets";
 import VennSection from "./VennVisualizationsSection/VennVisualizations";
 import DataDescription from "./DataDescription";
+import VisualizationSection from "./VolcanoVisualizationsSection/VisualizationSection";
 import { motion as m } from "framer-motion";
 
 export default function VisualizeBody() {
@@ -15,10 +16,10 @@ export default function VisualizeBody() {
       transition={{ duration: 0.75, ease: "easeOut" }}
     >
       <div className="volcano-background">
-        <VolcanoSection />
+        <VisualizationSection />
         <DataDescription />
-        <VennSection />
-        <DataDescription />
+        {/* <VennSection />
+        <DataDescription /> */}
       </div>
     </m.div>
   );
