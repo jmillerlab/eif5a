@@ -19,33 +19,37 @@ export default function PlotlyGraph(props) {
 
   return (
     <>
-      <m.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.75, ease: "easeOut" }}
-        className="plot-size"
-      >
-        <p
-          style={{
-            color: "black",
-            textAlign: "center",
-            marginTop: "20px",
-            marginBottom: "10px",
-          }}
-        >
-          {display}
-        </p>
-        <iframe
-          style={iframeStyle}
-          title="Dash App"
-          // src="src\graphs\DHS_DOHHvsWT_EC.all.cancer.html"
-          src={filePath}
-          allowFullScreen={true}
-          frameBorder="0"
-          navContentPaneEnabled={false}
-        />
-        ;
-      </m.div>
+      <div className="plot-container">
+        <div className="plot-spacing">
+          <m.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.75, ease: "easeOut" }}
+            className="plot-size"
+          >
+            <p
+              style={{
+                color: "black",
+                textAlign: "center",
+                marginTop: "20px",
+                marginBottom: "10px",
+              }}
+            >
+              {display}
+            </p>
+            <iframe
+              style={iframeStyle}
+              title="Dash App"
+              // src="src\graphs\DHS_DOHHvsWT_EC.all.cancer.html"
+              src={filePath}
+              allowFullScreen={true}
+              frameBorder="0"
+              navContentPaneEnabled={false}
+            />
+            ;
+          </m.div>
+        </div>
+      </div>
     </>
   );
 }

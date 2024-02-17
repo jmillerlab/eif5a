@@ -6,11 +6,19 @@ import Dropdown from "../DropDown";
 import DownArrow from "../../generalComponents/DownArrow";
 import ToggleSwitch from "../ToggleGraphComponent";
 import { motion as m } from "framer-motion";
+import MultiStateToggle from "../MultiStateToggle";
 
 export default function DEGListDatasets() {
   const [selectedDropdown, setSelectedDropdown] = useState("DHS_DOHHvsWT_EC");
   const [isTextInfoPressed, setIsTextInfoPressed] = useState(false);
   const [toggleState, setToggleState] = useState(false);
+
+  const [dataFromChild, setDataFromChild] = useState(3);
+
+  const handleDataFromChild = (data) => {
+    console.log("Data Recieved From Child:", data);
+    setDataFromChild(data);
+  };
 
   const handleTextInfoClick = () => {
     setIsTextInfoPressed((prevIsTextInfoPressed) => !prevIsTextInfoPressed);
@@ -51,21 +59,27 @@ export default function DEGListDatasets() {
       />
 
       <div className={containerClassName}>
+        {/* <div className="DEG-container-expanded"> */}
         {isTextInfoPressed ? (
           <>
+            <MultiStateToggle sendDataToParent={handleDataFromChild} />
+
             <m.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.75, ease: "easeOut" }}
-            >
-              <Dropdown
-                className={DEGdropdownLength}
-                selectedDropdown={selectedDropdown}
-                onChange={(e) => setSelectedDropdown(e.target.value)}
-                options={dropdownOptions}
-              />
-            </m.div>
+            ></m.div>
+
             <div className="DEG-box">
+              {dataFromChild === "Button 1" && (
+                <Dropdown
+                  className={DEGdropdownLength}
+                  selectedDropdown={selectedDropdown}
+                  onChange={(e) => setSelectedDropdown(e.target.value)}
+                  options={dropdownOptions}
+                />
+              )}
+
               {selectedDropdown === "DHS_DOHHvsWT_EC" && (
                 <>
                   <ToggleSwitch

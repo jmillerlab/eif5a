@@ -23,9 +23,9 @@
 }
 
 .instructions-container {
-  margin-top: 2vw;
+  margin: 40px;
 
-  padding: 1.5vw;
+  padding: 1vw;
   color: rgb(73, 73, 73);
   display: flex;
   /* font-size: 1.25vw; */
