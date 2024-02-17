@@ -11,20 +11,32 @@ import DownArrow from "../../generalComponents/DownArrow";
 export default function DEGListDatasets() {
   const [selectedDropdown, setSelectedDropdown] = useState("-- choose --");
   const [isTextInfoPressed, setIsTextInfoPressed] = useState(false);
-  const [dataFromChild, setDataFromChild] = useState("Button 1");
-
-  const containerClassName = isTextInfoPressed
-    ? "DEG-container-expanded"
-    : "DEG-container";
+  const [dataFromChild, setDataFromChild] = useState("All Genes");
 
   const handleDataFromChild = (data) => {
-    console.log("Data Recieved From Child:", data);
+    console.log("Data Received From Child:", data);
     setDataFromChild(data);
+    // Reset dropdown to "-- choose --" when text button is clicked
+    setSelectedDropdown("-- choose --");
   };
 
   const handleTextInfoClick = () => {
     setIsTextInfoPressed((prevIsTextInfoPressed) => !prevIsTextInfoPressed);
+    // Reset dropdown to "-- choose --" when text button is clicked
+    setSelectedDropdown("-- choose --");
   };
+
+  useEffect(() => {
+    if (dataFromChild !== "All Genes") {
+      setIsTextInfoPressed(false);
+    }
+  }, [dataFromChild]);
+
+  useEffect(() => {
+    if (selectedDropdown !== "-- choose --") {
+      setIsTextInfoPressed(false);
+    }
+  }, [selectedDropdown]);
 
   const DEGdropdownLength = "drop-down";
 
@@ -46,47 +58,51 @@ export default function DEGListDatasets() {
   ];
 
   return (
-    <div className="DEG-container-expanded">
-      <>
-        <MultiStateToggle sendDataToParent={handleDataFromChild} />
-        {/* 
+    <>
+      <div className="DEG-container-expanded">
+        <>
+          <MultiStateToggle sendDataToParent={handleDataFromChild} />
+          {/* 
         <m.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.75, ease: "easeOut" }}
         ></m.div> */}
 
-        {dataFromChild === "All Genes" && (
-          <div className="DEG-box">
-            <Dropdown
-              className={DEGdropdownLength}
-              selectedDropdown={selectedDropdown}
-              onChange={(e) => setSelectedDropdown(e.target.value)}
-              options={dropdownOptions}
-            />
-            {selectedDropdown === "-- choose --" && (
-              <div style={{ width: 30, height: 30, margin: 10 }}></div>
-            )}
-            {selectedDropdown === "DHS_DOHHvsWT_EC" && (
-              <>
-                <PlotlyGraph file={"DHS_DOHHvsWT_EC/DHS_DOHHvsWT_EC.DEG.all"} />
-              </>
-            )}
-            {selectedDropdown === "DHS_DOHHvsTar4_EC" && (
-              <>
-                <PlotlyGraph
-                  file={"DHS_DOHHvsTar4_EC/DHS_DOHHvsTar4_EC.DEG.all"}
-                />
-              </>
-            )}
-            <ExpandingComponentButton
-              onClick={handleTextInfoClick}
-              buttonText="View All"
-            />
-            {isTextInfoPressed ? <ViewAllPlotsComponent /> : <DownArrow />}
-          </div>
-        )}
-      </>
-    </div>
+          {dataFromChild === "All Genes" && (
+            <div className="DEG-box">
+              <Dropdown
+                className={DEGdropdownLength}
+                selectedDropdown={selectedDropdown}
+                onChange={(e) => setSelectedDropdown(e.target.value)}
+                options={dropdownOptions}
+              />
+              {selectedDropdown === "-- choose --" && (
+                <div style={{ width: 30, height: 30, margin: 10 }}></div>
+              )}
+              {selectedDropdown === "DHS_DOHHvsWT_EC" && (
+                <>
+                  <PlotlyGraph
+                    file={"DHS_DOHHvsWT_EC/DHS_DOHHvsWT_EC.DEG.all"}
+                  />
+                </>
+              )}
+              {selectedDropdown === "DHS_DOHHvsTar4_EC" && (
+                <>
+                  <PlotlyGraph
+                    file={"DHS_DOHHvsTar4_EC/DHS_DOHHvsTar4_EC.DEG.all"}
+                  />
+                </>
+              )}
+              <ExpandingComponentButton
+                onClick={handleTextInfoClick}
+                buttonText="View All"
+              />
+              {isTextInfoPressed ? <ViewAllPlotsComponent /> : <DownArrow />}
+            </div>
+          )}
+        </>
+      </div>
+    </>
   );
 }

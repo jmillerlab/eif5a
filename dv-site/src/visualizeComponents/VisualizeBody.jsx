@@ -15,7 +15,7 @@ export default function VisualizeBody() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.75, ease: "easeOut" }}
     >
-      <div className="volcano-background">
+      <div className="">
         <VisualizationSection />
         <DataDescription />
         {/* <VennSection />
