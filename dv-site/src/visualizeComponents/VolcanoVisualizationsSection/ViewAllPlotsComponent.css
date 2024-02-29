@@ -1,9 +1,0 @@
-.plots-grid {
-  display: grid;
-  grid-template-rows: repeat(auto-fill, minmax(300px, 1fr));
-  grid-gap: 20px;
-}
-
-.plot-item {
-  width: 100%;
-}

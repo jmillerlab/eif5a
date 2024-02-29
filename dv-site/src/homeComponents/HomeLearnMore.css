@@ -17,7 +17,7 @@
 .p3-background {
   background-image: url(../Bioinformatics-vs-computational-biology.jpg);
   background-size: 100%;
-  min-width: 700px;
+  min-width: 800px;
   background-repeat: repeat-y;
   min-height: 300px;
 }
@@ -41,7 +41,7 @@
   margin-bottom: 50px;
   width: 1000px;
   height: inherit;
-  min-width: 700px;
+  min-width: 800px;
 
   top: 35%;
   left: 50%;
