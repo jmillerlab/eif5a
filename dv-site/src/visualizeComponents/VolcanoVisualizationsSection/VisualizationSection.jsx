@@ -54,7 +54,7 @@ export default function DEGListDatasets() {
                   flexDirection: "column",
                 }}
               >
-                <h2>Visualize a Specific Pathway</h2>
+                <h2>Visualize Specific Pathway</h2>
                 <div style={{ marginTop: 35 }}>
                   <DownArrow />
                 </div>
