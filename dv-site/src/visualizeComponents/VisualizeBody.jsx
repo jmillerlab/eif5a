@@ -17,7 +17,7 @@ export default function VisualizeBody() {
     >
       <div className="">
         <VisualizationSection />
-        <DataDescription />
+        {/* <DataDescription /> */}
         {/* <VennSection />
         <DataDescription /> */}
       </div>

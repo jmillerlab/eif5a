@@ -13,7 +13,7 @@
   display: flex;
   justify-content: center;
   margin: 0;
-  min-width: 700px;
+  min-width: 800px;
   min-height: 220px;
 
   background-color: rgba(31, 31, 31, 0.9);
@@ -34,9 +34,10 @@
   justify-items: center;
   align-items: center;
 }
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   .visualize-container h1 {
     display: flex;
+
     font-size: 20px;
     justify-items: center;
     align-items: center;

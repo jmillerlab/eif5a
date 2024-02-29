@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function MultiStateToggle({ sendDataToParent }) {
   const [activeButtonIndex, setActiveButtonIndex] = useState(0);
-  const buttonTexts = ["All Genes", "KEGG", "Reactome", "WikiPathways"];
+  const buttonTexts = ["All Genes", "KEGG", "Reactome", "Wiki\nPathways"];
 
   const handleClick = (index) => {
     setActiveButtonIndex(index);
