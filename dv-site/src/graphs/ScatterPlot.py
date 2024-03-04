@@ -15,8 +15,8 @@ def create_scatterplot(csv_path, output_html_path):
 
     # Create a new column for coloring based on significance and log2FoldChange
     data['Category'] = 'Non-Significant'
-    data.loc[(data['-log10(padj)'] >= p_value_threshold) & (data['log2FoldChange'] > 0), 'Category'] = 'Positive Significant'
-    data.loc[(data['-log10(padj)'] >= p_value_threshold) & (data['log2FoldChange'] < 0), 'Category'] = 'Negative Significant'
+    data.loc[(data['-log10(padj)'] >= p_value_threshold) & (data['log2FoldChange'] > 0), 'Category'] = 'Up Regulated'
+    data.loc[(data['-log10(padj)'] >= p_value_threshold) & (data['log2FoldChange'] < 0), 'Category'] = 'Down Regulated'
 
     scatterplot = px.scatter(
         data_frame=data,
@@ -27,8 +27,8 @@ def create_scatterplot(csv_path, output_html_path):
         color="Category",
         color_discrete_map={
             "Non-Significant": "lightslategray",
-            "Positive Significant": "blue",
-            "Negative Significant": "red"
+            "Up Regulated": "blue",
+            "Down Regulated": "red"
         }
     )
 
