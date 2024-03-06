@@ -1,4 +1,5 @@
-<div>
+export default function plot({ style }) {
+  const htmlContent = `<div>
   <script type="text/javascript">
     window.PlotlyConfig = { MathJaxConfig: "local" };
   </script>
@@ -7198,3 +7199,21 @@
     }
   </script>
 </div>
+`;
+
+  const blob = new Blob([htmlContent], { type: "text/html" });
+
+  // Create a URL for the Blob
+  const url = URL.createObjectURL(blob);
+
+  return (
+    <iframe
+      src={url}
+      width="100%"
+      height="500"
+      style={style}
+      title="Plotly Chart"
+      frameBorder="0"
+    ></iframe>
+  );
+}

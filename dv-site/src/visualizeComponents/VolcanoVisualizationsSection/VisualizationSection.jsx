@@ -6,7 +6,6 @@ import MultiStateToggle from "../MultiStateToggle";
 import DownArrow from "../../generalComponents/DownArrow";
 import EnrichmentLink from "../EnrichmentLink";
 import { color } from "framer-motion";
-
 export default function DEGListDatasets() {
   const [selectedDropdown, setSelectedDropdown] = useState("-- choose --");
   const [dataFromChild, setDataFromChild] = useState("All Genes");
@@ -19,59 +18,70 @@ export default function DEGListDatasets() {
 
   const DEGdropdownLength = "drop-down";
 
+  {
+    /*
+
+    TAR4 mice _Sham injection vs. Sham injection _ wt mice
+
+Deoxyhypusine synthase Deoxyhupysine Hydroxylase (DD) _TAR4 mice vs. Sham injection _ wt mice
+
+Deoxyhypusine synthase Deoxyhupysine Hydroxylase (DD) _TAR4 mice vs. Sham injection _ TAR4 mice
+
+Eukaryotic Translation Initiation Factor 5A _TAR4 mice vs. Sham injection _ wt mice
+
+Eukaryotic Translation Initiation Factor 5A_DD_TAR4 mice vs. Sham injection _ wt mice
+
+Eukaryotic Translation Initiation Factor 5A_DDK50A_TAR4 mice vs. Sham injection _ wt mice
+
+Eukaryotic Translation Initiation Factor 5A _TAR4 mice vs. Sham injection _ TAR4 mice
+
+Eukaryotic Translation Initiation Factor 5A_DD_TAR4 mice vs. Sham injection _ TAR4 mice
+
+Eukaryotic Translation Initiation Factor 5A_DDK50A_TAR4 mice vs. Sham injection _ TAR4 mice
+*/
+  }
+
   const dropdownOptions = [
     { graph: "-- choose --" },
     {
       graph: "DHS_DOHHvsWT_EC",
-      link: "https://string-db.org/cgi/globalenrichment?taskId=bXXspEtxkiqI&sessionId=bndelpK3FA9t",
     },
+
     {
       graph: "DHS_DOHHvsTar4_EC",
-      link: "https://string-db.org/cgi/globalenrichment?taskId=b2GvYTJtmwM6&sessionId=bndelpK3FA9t",
     },
     {
       graph: "eIF5A_DDvsDHS_DOHH",
-      link: "https://string-db.org/cgi/globalenrichment?taskId=bpk8m7buuCdk&sessionId=bndelpK3FA9t",
     },
     {
       graph: "eIF5A_DDvseIF5A",
-      link: "https://string-db.org/cgi/globalenrichment?taskId=bja6U6MDoqx2&sessionId=bndelpK3FA9t",
     },
     {
       graph: "eIF5A_DDvsK50A_DD",
-      link: "https://string-db.org/cgi/globalenrichment?taskId=bPnfVp4lXDSp&sessionId=bndelpK3FA9t",
     },
     {
       graph: "eIF5A_DDvsTar4_EC",
-      link: "https://string-db.org/cgi/globalenrichment?taskId=b5BZZ7zTSj0H&sessionId=bndelpK3FA9t",
     },
     {
       graph: "eIF5A_DDvsWT_EC",
-      link: "https://string-db.org/cgi/globalenrichment?taskId=baTmSkYGXvyP&sessionId=bndelpK3FA9t",
     },
     {
       graph: "eIF5AvsTar4_EC",
-      link: "https://string-db.org/cgi/globalenrichment?taskId=b55HyzDBWZGW&sessionId=bndelpK3FA9t",
     },
     {
       graph: "eIF5AvsWT_EC",
-      link: "https://string-db.org/cgi/globalenrichment?taskId=b5Snx9kWVdzb&sessionId=bndelpK3FA9t",
     },
     {
       graph: "K50A_DDvsDHS_DOHH",
-      link: "https://string-db.org/cgi/globalenrichment?taskId=bDStXBpv46p2&sessionId=bndelpK3FA9t",
     },
     {
       graph: "K50A_DDvsTar4_EC",
-      link: "https://string-db.org/cgi/globalenrichment?taskId=bWsR84okEunn&sessionId=bndelpK3FA9t",
     },
     {
       graph: "K50A_DDvsWT_EC",
-      link: "https://string-db.org/cgi/globalenrichment?taskId=bFHXogsut7g2&sessionId=bndelpK3FA9t",
     },
     {
       graph: "Tar4_ECvsWT_EC",
-      link: "https://string-db.org/cgi/globalenrichment?taskId=b6jpYUolgJ4X&sessionId=bndelpK3FA9t",
     },
   ];
 
@@ -80,7 +90,6 @@ export default function DEGListDatasets() {
       <div className="DEG-container-expanded">
         <>
           <MultiStateToggle sendDataToParent={handleDataFromChild} />
-
           {dataFromChild === "All Genes" && (
             <>
               <div
@@ -123,7 +132,6 @@ export default function DEGListDatasets() {
                 {selectedDropdown === "-- choose --" ? (
                   <>
                     <div style={{ width: 30, height: 30, margin: 10 }}></div>
-                    {/* <DownArrow /> */}
                   </>
                 ) : (
                   dropdownOptions.map(
@@ -134,7 +142,6 @@ export default function DEGListDatasets() {
                             <PlotlyGraph
                               file={`${option.graph}/${option.graph}.DEG.all`}
                             />
-                            {/* <EnrichmentLink link={option.link} /> */}
                           </div>
                         </div>
                       )
@@ -143,7 +150,7 @@ export default function DEGListDatasets() {
               </div>
 
               <iframe
-                src="https://version-12-0.string-db.org/cgi/globalenrichment?pollingId=bxqKHeLtd1aO&sessionId=b2dBxIlK90Pc&urldisam=bjPCNttqiP6a"
+                src="https://version-12-0.string-db.org/cgi/globalenrichment?networkId=bBmGA3kwle9n"
                 title="Embedded Page"
                 width="100%"
                 height="1150px"
