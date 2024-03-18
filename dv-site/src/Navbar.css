@@ -6,9 +6,11 @@
 
 .navbar {
   background-color: rgba(31, 31, 31, 1);
-
   display: flex;
-  height: 70px;
+  position: fixed;
+  height: 60px;
+  width: 100%;
+  z-index: 1000;
   justify-content: center;
   align-items: center;
   padding: 0 24px;
@@ -28,6 +30,8 @@
   align-items: center;
   height: 50px;
   gap: 60px;
+  background-color: rgba(31, 31, 31, 1);
+  height: auto;
 }
 
 .nav-branding {
@@ -45,7 +49,7 @@
   /*background-color: rgb(31, 31, 31);*/
 
   color: rgb(117, 117, 117);
-  transition-duration: 0.5s;
+  /* transition-duration: 0.5s; */
 }
 
 .nav-link:active {
@@ -53,7 +57,7 @@
   font-size: 1.05rem;
 
   height: 100%;
-  transition: 0.03s;
+  /* transition: 0.03s; */
 }
 
 .active-page {
@@ -63,11 +67,12 @@
 
   list-style-type: none;
   height: 100%;
-  transition: 0.03s;
+  /* transition: 0.03s; */
 }
 
 .active-page a {
   color: rgb(117, 117, 117);
+  transition: 0.5s;
 }
 
 .hamburger {
@@ -75,6 +80,7 @@
   cursor: pointer;
   height: 100%;
   padding-top: 20px;
+  transition: 0.5s;
 }
 
 .bar {
@@ -85,39 +91,69 @@
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.03s ease-in-out;
   background-color: white;
+  transition: 0.5s;
 }
 
 @media (max-width: 768px) {
   .hamburger {
     display: block;
+    position: fixed;
+    height: auto;
+    top: -9px;
   }
 
   .hamburger.active .bar:nth-child(2) {
     opacity: 0;
+    /* transition: 0.5s; */
   }
   .hamburger.active .bar:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
+    /* transition: 0.5s; */
   }
   .hamburger.active .bar:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
+    /* transition: 0.5s; */
   }
   .nav-menu {
     position: fixed;
-    left: -100%;
-    top: 70px;
+    /* left: -100%; */
+    right: 0;
+    top: -100%;
     gap: 0;
     flex-direction: column;
     background-color: #303030;
     width: 100%;
     text-align: center;
-    transition: 0.3s;
+    transition: 0.5s;
+
+    z-index: 800;
   }
   .nav-item {
-    margin: 16px 0;
+    align-items: center;
+    justify-content: center;
+    border-bottom: rgb(53, 53, 53) solid 0.1px;
+
+    width: 65%;
+    height: 100%;
+    transition: 0.5s;
+  }
+  .nav-link {
+    margin: 10px;
   }
   .nav-menu.active {
     left: 0;
+
+    top: 50px;
+    background-color: rgba(31, 31, 31, 1);
+    height: auto;
+    transition: 0.5s;
   }
+  .navbar {
+    height: 50px;
+  }
+}
+.active {
+  color: rgb(82, 82, 82);
 }
 
 /*

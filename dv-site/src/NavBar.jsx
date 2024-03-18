@@ -1,24 +1,47 @@
 import "./Navbar.css";
 import { NavLink } from "react-router-dom";
+import React, { useState } from "react";
 
 // ... (Other imports)
-
 export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <>
       <header>
         <nav className="navbar">
-          <ul className="nav-menu">
-            <CustomLink to="/" exact>
-              Home
-            </CustomLink>
-            <CustomLink to="/about">About</CustomLink>
-            <CustomLink to="/studies">Publications</CustomLink>
-            <CustomLink to="http://selenicalab.createuky.net/" external>
-              The Lab
-            </CustomLink>
-            <CustomLink to="/visualize">Visualize</CustomLink>
-          </ul>
+          <div className="navbar-container">
+            {/* <div className="nav-branding">Navbar</div> */}
+            <div
+              className={`hamburger ${isOpen ? "active" : ""}`}
+              onClick={toggleMenu}
+            >
+              <span className="bar"></span>
+              <span className="bar"></span>
+              <span className="bar"></span>
+            </div>
+            <ul className={`nav-menu ${isOpen ? "active" : ""}`}>
+              <CustomLink to="/" exact onClick={toggleMenu}>
+                Home
+              </CustomLink>
+              <CustomLink to="/about" onClick={toggleMenu}>
+                About
+              </CustomLink>
+              <CustomLink to="/studies" onClick={toggleMenu}>
+                Publications
+              </CustomLink>
+              <CustomLink to="http://selenicalab.createuky.net/" external>
+                The Lab
+              </CustomLink>
+              <CustomLink to="/visualize" onClick={toggleMenu}>
+                Visualize
+              </CustomLink>
+            </ul>
+          </div>
         </nav>
       </header>
     </>

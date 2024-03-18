@@ -86,125 +86,121 @@ Eukaryotic Translation Initiation Factor 5A_DDK50A_TAR4 mice vs. Sham injection 
   ];
 
   return (
-    <>
-      <div className="DEG-container-expanded">
+    <div className="DEG-container-expanded">
+      <MultiStateToggle sendDataToParent={handleDataFromChild} />
+      {dataFromChild === "All Genes" && (
         <>
-          <MultiStateToggle sendDataToParent={handleDataFromChild} />
-          {dataFromChild === "All Genes" && (
-            <>
-              <div
-                style={{
-                  color: "black",
-                  width: "100%",
-                  height: 100,
-                  textAlign: "center",
-                  marginTop: 15,
-                  display: "flex",
-                  alignItems: "center",
-                  flexDirection: "column",
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    flexDirection: "column",
-                  }}
-                >
-                  <h2 style={{ marginBottom: 60 }}>
-                    Explore the entire enrichment analysis or view relevant
-                    information to a specific pathway
-                  </h2>
-                  <DownArrow />
-                  <h3>Choose a Pathway</h3>
-                </div>
-              </div>
+          <div
+            style={{
+              color: "black",
+              width: "100%",
+              height: 100,
+              textAlign: "center",
+              marginTop: 15,
+              display: "flex",
+              alignItems: "center",
+              flexDirection: "column",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexDirection: "column",
+              }}
+            >
+              <h2 style={{ marginBottom: 60, minWidth: 500 }}>
+                Explore the entire enrichment analysis or view relevant
+                information to a specific pathway
+              </h2>
+              <DownArrow />
+              <h3>Choose a Pathway</h3>
+            </div>
+          </div>
 
-              <div className="DEG-box">
-                <Dropdown
-                  className={DEGdropdownLength}
-                  selectedDropdown={selectedDropdown}
-                  onChange={(e) => setSelectedDropdown(e.target.value)}
-                  options={dropdownOptions}
-                />
+          <div className="DEG-box">
+            <Dropdown
+              className={DEGdropdownLength}
+              selectedDropdown={selectedDropdown}
+              onChange={(e) => setSelectedDropdown(e.target.value)}
+              options={dropdownOptions}
+            />
 
-                {selectedDropdown === "-- choose --" ? (
-                  <>
-                    <div style={{ width: 30, height: 30, margin: 10 }}></div>
-                  </>
-                ) : (
-                  dropdownOptions.map(
-                    (option, index) =>
-                      selectedDropdown === option.graph && (
-                        <div key={index}>
-                          <div className="graph-container">
-                            <PlotlyGraph
-                              file={`${option.graph}/${option.graph}.DEG.all`}
-                            />
-                          </div>
-                        </div>
-                      )
+            {selectedDropdown === "-- choose --" ? (
+              <>
+                <div style={{ width: 30, height: 30, margin: 10 }}></div>
+              </>
+            ) : (
+              dropdownOptions.map(
+                (option, index) =>
+                  selectedDropdown === option.graph && (
+                    <div key={index}>
+                      <div className="graph-container">
+                        <PlotlyGraph
+                          file={`${option.graph}/${option.graph}.DEG.all`}
+                        />
+                      </div>
+                    </div>
                   )
-                )}
-              </div>
+              )
+            )}
+          </div>
 
-              <iframe
-                src="https://version-12-0.string-db.org/cgi/globalenrichment?networkId=bBmGA3kwle9n"
-                title="Embedded Page"
-                width="100%"
-                height="1150px"
-                frameBorder="0"
-                scrolling="auto"
-              ></iframe>
-            </>
-          )}
-          {dataFromChild === "KEGG" && (
-            <div
-              style={{
-                display: "flex",
-                width: "100%",
-                height: 500,
-                color: "black",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              Specific Visualizations Coming Soon
-            </div>
-          )}
-          {dataFromChild === "Wiki\nPathways" && (
-            <div
-              style={{
-                display: "flex",
-
-                width: "100%",
-                height: 500,
-                color: "black",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              Specific Visualizations Coming Soon
-            </div>
-          )}
-          {dataFromChild === "Reactome" && (
-            <div
-              style={{
-                display: "flex",
-
-                width: "100%",
-                height: 500,
-                color: "black",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              Specific Visualizations Coming Soon
-            </div>
-          )}
+          <iframe
+            src="https://version-12-0.string-db.org/cgi/globalenrichment?networkId=bBmGA3kwle9n"
+            title="Embedded Page"
+            width="100%"
+            height="1150px"
+            frameBorder="0"
+            scrolling="auto"
+          ></iframe>
         </>
-      </div>
-    </>
+      )}
+      {dataFromChild === "KEGG" && (
+        <div
+          style={{
+            display: "flex",
+            width: "100%",
+            height: 500,
+            color: "black",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          Specific Visualizations Coming Soon
+        </div>
+      )}
+      {dataFromChild === "Wiki\nPathways" && (
+        <div
+          style={{
+            display: "flex",
+
+            width: "100%",
+            height: 500,
+            color: "black",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          Specific Visualizations Coming Soon
+        </div>
+      )}
+      {dataFromChild === "Reactome" && (
+        <div
+          style={{
+            display: "flex",
+
+            width: "100%",
+            height: 500,
+            color: "black",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          Specific Visualizations Coming Soon
+        </div>
+      )}
+    </div>
   );
 }

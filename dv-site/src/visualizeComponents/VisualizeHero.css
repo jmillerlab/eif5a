@@ -13,7 +13,6 @@
   display: flex;
   justify-content: center;
   margin: 0;
-  min-width: 800px;
   min-height: 220px;
 
   background-color: rgba(31, 31, 31, 0.9);
@@ -34,12 +33,24 @@
   justify-items: center;
   align-items: center;
 }
-@media (max-width: 800px) {
+
+@media (max-width: 1000px) {
+  .visualize-container h1 {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 500px) {
   .visualize-container h1 {
     display: flex;
 
-    font-size: 20px;
     justify-items: center;
     align-items: center;
+  }
+  .visualize-container {
+    width: 500px;
+  }
+  .vh-container {
+    width: 500px;
   }
 }

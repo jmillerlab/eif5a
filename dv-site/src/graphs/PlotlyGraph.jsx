@@ -19,7 +19,7 @@ export default function PlotlyGraph(props) {
     width: "100%",
     height: "100%",
     minHeight: "300px",
-    minWidth: "600px",
+    minWidth: "500px",
   };
 
   const graphsMap = {
