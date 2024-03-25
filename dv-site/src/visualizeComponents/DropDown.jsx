@@ -15,8 +15,8 @@ export default function Dropdown({
         onChange={onChange}
       >
         {options.map((option, index) => (
-          <option key={index} value={option.graph} className="option">
-            {option.graph}
+          <option key={index} value={option.label} className="option">
+            {option.label}
           </option>
         ))}
       </select>

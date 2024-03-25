@@ -18,7 +18,7 @@ export default function PlotlyGraph(props) {
   const iframeStyle = {
     width: "100%",
     height: "100%",
-    minHeight: "300px",
+    minHeight: "500px",
     minWidth: "500px",
   };
 

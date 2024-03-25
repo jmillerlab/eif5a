@@ -6,15 +6,24 @@ import MultiStateToggle from "../MultiStateToggle";
 import DownArrow from "../../generalComponents/DownArrow";
 import EnrichmentLink from "../EnrichmentLink";
 import { color } from "framer-motion";
+import BarChart from "../../barCharts/DHS_DOHHvsTar4_EC";
+import PlotlyBarChart from "../../barCharts/PlotlyJS";
 export default function DEGListDatasets() {
   const [selectedDropdown, setSelectedDropdown] = useState("-- choose --");
   const [dataFromChild, setDataFromChild] = useState("All Genes");
+  const [numTerms, setNumTerms] = useState(0);
 
   const handleDataFromChild = (data) => {
     console.log("Data Received From Child:", data);
     setDataFromChild(data);
     setSelectedDropdown("-- choose --");
   };
+  useEffect(() => {
+    if (selectedDropdown !== "-- choose --") {
+      // Convert selectedDropdown to a number and update numTerms
+      setNumTerms(parseInt(selectedDropdown, 10));
+    }
+  }, [selectedDropdown]);
 
   const DEGdropdownLength = "drop-down";
 
@@ -40,48 +49,55 @@ Eukaryotic Translation Initiation Factor 5A_DD_TAR4 mice vs. Sham injection _ TA
 Eukaryotic Translation Initiation Factor 5A_DDK50A_TAR4 mice vs. Sham injection _ TAR4 mice
 */
   }
+  const dropdownTerms = [
+    { label: "-- choose --", value: "-- choose --" },
+    { label: "10", value: 10 },
+    { label: "20", value: 20 },
+    { label: "50", value: 50 },
+  ];
+  const termsLength = "terms";
 
   const dropdownOptions = [
-    { graph: "-- choose --" },
+    { label: "-- choose --" },
     {
-      graph: "DHS_DOHHvsWT_EC",
+      label: "DHS_DOHHvsWT_EC",
     },
 
     {
-      graph: "DHS_DOHHvsTar4_EC",
+      label: "DHS_DOHHvsTar4_EC",
     },
     {
-      graph: "eIF5A_DDvsDHS_DOHH",
+      label: "eIF5A_DDvsDHS_DOHH",
     },
     {
-      graph: "eIF5A_DDvseIF5A",
+      label: "eIF5A_DDvseIF5A",
     },
     {
-      graph: "eIF5A_DDvsK50A_DD",
+      label: "eIF5A_DDvsK50A_DD",
     },
     {
-      graph: "eIF5A_DDvsTar4_EC",
+      label: "eIF5A_DDvsTar4_EC",
     },
     {
-      graph: "eIF5A_DDvsWT_EC",
+      label: "eIF5A_DDvsWT_EC",
     },
     {
-      graph: "eIF5AvsTar4_EC",
+      label: "eIF5AvsTar4_EC",
     },
     {
-      graph: "eIF5AvsWT_EC",
+      label: "eIF5AvsWT_EC",
     },
     {
-      graph: "K50A_DDvsDHS_DOHH",
+      label: "K50A_DDvsDHS_DOHH",
     },
     {
-      graph: "K50A_DDvsTar4_EC",
+      label: "K50A_DDvsTar4_EC",
     },
     {
-      graph: "K50A_DDvsWT_EC",
+      label: "K50A_DDvsWT_EC",
     },
     {
-      graph: "Tar4_ECvsWT_EC",
+      label: "Tar4_ECvsWT_EC",
     },
   ];
 
@@ -110,12 +126,8 @@ Eukaryotic Translation Initiation Factor 5A_DDK50A_TAR4 mice vs. Sham injection 
                 flexDirection: "column",
               }}
             >
-              <h2 style={{ marginBottom: 60, minWidth: 500 }}>
-                Explore the entire enrichment analysis or view relevant
-                information to a specific pathway
-              </h2>
+              <h3 style={{ margin: 30 }}>View a Pathway</h3>
               <DownArrow />
-              <h3>Choose a Pathway</h3>
             </div>
           </div>
 
@@ -134,11 +146,11 @@ Eukaryotic Translation Initiation Factor 5A_DDK50A_TAR4 mice vs. Sham injection 
             ) : (
               dropdownOptions.map(
                 (option, index) =>
-                  selectedDropdown === option.graph && (
+                  selectedDropdown === option.label && (
                     <div key={index}>
                       <div className="graph-container">
                         <PlotlyGraph
-                          file={`${option.graph}/${option.graph}.DEG.all`}
+                          file={`${option.label}/${option.label}.DEG.all`}
                         />
                       </div>
                     </div>
@@ -158,6 +170,8 @@ Eukaryotic Translation Initiation Factor 5A_DDK50A_TAR4 mice vs. Sham injection 
         </>
       )}
       {dataFromChild === "KEGG" && (
+        // <BarChart />
+
         <div
           style={{
             display: "flex",
@@ -187,19 +201,34 @@ Eukaryotic Translation Initiation Factor 5A_DDK50A_TAR4 mice vs. Sham injection 
         </div>
       )}
       {dataFromChild === "Reactome" && (
-        <div
-          style={{
-            display: "flex",
+        <>
+          <Dropdown
+            className={termsLength}
+            selectedDropdown={selectedDropdown}
+            onChange={(e) => setSelectedDropdown(e.target.value)}
+            options={dropdownTerms}
+          />
+          {selectedDropdown === "-- choose --" ? (
+            <PlotlyBarChart numTerms={10} />
+          ) : (
+            <PlotlyBarChart numTerms={numTerms} />
+          )}
 
-            width: "100%",
-            height: 500,
-            color: "black",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          Specific Visualizations Coming Soon
-        </div>
+          {/* <PlotlyBarChart numTerms={selectedDropdown} /> */}
+        </>
+        // <div
+        //   style={{
+        //     display: "flex",
+
+        //     width: "100%",
+        //     height: 500,
+        //     color: "black",
+        //     alignItems: "center",
+        //     justifyContent: "center",
+        //   }}
+        // >
+        //   Specific Visualizations Coming Soon
+        // </div>
       )}
     </div>
   );

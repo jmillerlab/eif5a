@@ -8,10 +8,6 @@ export default function Visualize() {
     <div style={{ minWidth: "500px" }}>
       <VisualizeHero />
       <VisualizeSection />
-      {/* <VisualizeBody /> */}
-      {/* 
-      <VennVisualizations />
-      <DataDescription /> */}
     </div>
   );
 }
