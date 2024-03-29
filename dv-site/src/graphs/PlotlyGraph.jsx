@@ -64,23 +64,13 @@ export default function PlotlyGraph(props) {
               style={{
                 color: "black",
                 textAlign: "center",
-                marginTop: "20px",
+                marginTop: "50px",
                 marginBottom: "10px",
               }}
             >
               {display}
             </p>
-            {graphsMap[key]}
-            {/* <iframe
-              style={iframeStyle}
-              title="Dash App"
-              // src="src\graphs\DHS_DOHHvsWT_EC.all.cancer.html"
-              src={filePath}
-              allowFullScreen={true}
-              frameBorder="0"
-              navContentPaneEnabled={false}
-            /> */}
-            ;
+            {graphsMap[key]};
           </m.div>
         </div>
       </div>

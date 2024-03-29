@@ -4,51 +4,41 @@ import PlotlyGraph from "../../graphs/PlotlyGraph";
 import Dropdown from "../DropDown";
 import MultiStateToggle from "../MultiStateToggle";
 import DownArrow from "../../generalComponents/DownArrow";
-import EnrichmentLink from "../EnrichmentLink";
-import { color } from "framer-motion";
-import BarChart from "../../barCharts/DHS_DOHHvsTar4_EC";
 import PlotlyBarChart from "../../barCharts/PlotlyJS";
+import DHS_DOHHvsTar4_EC_KEGG from "../../barCharts/DHS_DOHHvsTar4_EC/enrichment.KEGG.json";
+import DHS_DOHHvsTar4_EC_RCTM from "../../barCharts/DHS_DOHHvsTar4_EC/enrichment.RCTM.json";
+import DHS_DOHHvsTar4_EC_WikiPathways from "../../barCharts/DHS_DOHHvsTar4_EC/enrichment.WikiPathways.json";
+import DHS_DOHHvsWT_EC_KEGG from "../../barCharts/DHS_DOHHvsWT_EC/enrichment.KEGG.json";
+import DHS_DOHHvsWT_EC_RCTM from "../../barCharts/DHS_DOHHvsWT_EC/enrichment.RCTM.json";
+import DHS_DOHHvsWT_EC_WikiPathways from "../../barCharts/DHS_DOHHvsWT_EC/enrichment.WikiPathways.json";
+
 export default function DEGListDatasets() {
   const [selectedDropdown, setSelectedDropdown] = useState("-- choose --");
   const [dataFromChild, setDataFromChild] = useState("All Genes");
   const [numTerms, setNumTerms] = useState(0);
+  const [selectedChartData, setSelectedChartData] = useState(null);
+  const [mainCategory, setMainCategory] = useState("DHS_DOHHvsWT_EC");
+  const [subCategory, setSubCategory] = useState("KEGG");
 
   const handleDataFromChild = (data) => {
     console.log("Data Received From Child:", data);
     setDataFromChild(data);
     setSelectedDropdown("-- choose --");
+    setSubCategory(data);
   };
   useEffect(() => {
     if (selectedDropdown !== "-- choose --") {
-      // Convert selectedDropdown to a number and update numTerms
       setNumTerms(parseInt(selectedDropdown, 10));
     }
   }, [selectedDropdown]);
 
+  useEffect(() => {
+    const chartData = chartDataMapping[mainCategory]?.[subCategory];
+    setSelectedChartData(chartData);
+  }, [mainCategory, subCategory]);
+
   const DEGdropdownLength = "drop-down";
 
-  {
-    /*
-
-    TAR4 mice _Sham injection vs. Sham injection _ wt mice
-
-Deoxyhypusine synthase Deoxyhupysine Hydroxylase (DD) _TAR4 mice vs. Sham injection _ wt mice
-
-Deoxyhypusine synthase Deoxyhupysine Hydroxylase (DD) _TAR4 mice vs. Sham injection _ TAR4 mice
-
-Eukaryotic Translation Initiation Factor 5A _TAR4 mice vs. Sham injection _ wt mice
-
-Eukaryotic Translation Initiation Factor 5A_DD_TAR4 mice vs. Sham injection _ wt mice
-
-Eukaryotic Translation Initiation Factor 5A_DDK50A_TAR4 mice vs. Sham injection _ wt mice
-
-Eukaryotic Translation Initiation Factor 5A _TAR4 mice vs. Sham injection _ TAR4 mice
-
-Eukaryotic Translation Initiation Factor 5A_DD_TAR4 mice vs. Sham injection _ TAR4 mice
-
-Eukaryotic Translation Initiation Factor 5A_DDK50A_TAR4 mice vs. Sham injection _ TAR4 mice
-*/
-  }
   const dropdownTerms = [
     { label: "-- choose --", value: "-- choose --" },
     { label: "10", value: 10 },
@@ -57,48 +47,29 @@ Eukaryotic Translation Initiation Factor 5A_DDK50A_TAR4 mice vs. Sham injection 
   ];
   const termsLength = "terms";
 
+  const chartDataMapping = {
+    DHS_DOHHvsWT_EC: {
+      KEGG: DHS_DOHHvsWT_EC_KEGG,
+      RCTM: DHS_DOHHvsWT_EC_RCTM,
+      WikiPathways: DHS_DOHHvsWT_EC_WikiPathways,
+    },
+  };
+
   const dropdownOptions = [
     { label: "-- choose --" },
-    {
-      label: "DHS_DOHHvsWT_EC",
-    },
-
-    {
-      label: "DHS_DOHHvsTar4_EC",
-    },
-    {
-      label: "eIF5A_DDvsDHS_DOHH",
-    },
-    {
-      label: "eIF5A_DDvseIF5A",
-    },
-    {
-      label: "eIF5A_DDvsK50A_DD",
-    },
-    {
-      label: "eIF5A_DDvsTar4_EC",
-    },
-    {
-      label: "eIF5A_DDvsWT_EC",
-    },
-    {
-      label: "eIF5AvsTar4_EC",
-    },
-    {
-      label: "eIF5AvsWT_EC",
-    },
-    {
-      label: "K50A_DDvsDHS_DOHH",
-    },
-    {
-      label: "K50A_DDvsTar4_EC",
-    },
-    {
-      label: "K50A_DDvsWT_EC",
-    },
-    {
-      label: "Tar4_ECvsWT_EC",
-    },
+    { label: "DHS_DOHHvsWT_EC" },
+    { label: "DHS_DOHHvsTar4_EC" },
+    { label: "eIF5A_DDvsDHS_DOHH" },
+    { label: "eIF5A_DDvseIF5A" },
+    { label: "eIF5A_DDvsK50A_DD" },
+    { label: "eIF5A_DDvsTar4_EC" },
+    { label: "eIF5A_DDvsWT_EC" },
+    { label: "eIF5AvsTar4_EC" },
+    { label: "eIF5AvsWT_EC" },
+    { label: "K50A_DDvsDHS_DOHH" },
+    { label: "K50A_DDvsTar4_EC" },
+    { label: "K50A_DDvsWT_EC" },
+    { label: "Tar4_ECvsWT_EC" },
   ];
 
   return (
@@ -170,37 +141,6 @@ Eukaryotic Translation Initiation Factor 5A_DDK50A_TAR4 mice vs. Sham injection 
         </>
       )}
       {dataFromChild === "KEGG" && (
-        // <BarChart />
-
-        <div
-          style={{
-            display: "flex",
-            width: "100%",
-            height: 500,
-            color: "black",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          Specific Visualizations Coming Soon
-        </div>
-      )}
-      {dataFromChild === "Wiki\nPathways" && (
-        <div
-          style={{
-            display: "flex",
-
-            width: "100%",
-            height: 500,
-            color: "black",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          Specific Visualizations Coming Soon
-        </div>
-      )}
-      {dataFromChild === "Reactome" && (
         <>
           <Dropdown
             className={termsLength}
@@ -208,27 +148,47 @@ Eukaryotic Translation Initiation Factor 5A_DDK50A_TAR4 mice vs. Sham injection 
             onChange={(e) => setSelectedDropdown(e.target.value)}
             options={dropdownTerms}
           />
-          {selectedDropdown === "-- choose --" ? (
-            <PlotlyBarChart numTerms={10} />
-          ) : (
-            <PlotlyBarChart numTerms={numTerms} />
+          {selectedDropdown !== "-- choose --" && (
+            <PlotlyBarChart
+              numTerms={numTerms}
+              chart={DHS_DOHHvsTar4_EC_KEGG}
+            />
           )}
-
           {/* <PlotlyBarChart numTerms={selectedDropdown} /> */}
         </>
-        // <div
-        //   style={{
-        //     display: "flex",
-
-        //     width: "100%",
-        //     height: 500,
-        //     color: "black",
-        //     alignItems: "center",
-        //     justifyContent: "center",
-        //   }}
-        // >
-        //   Specific Visualizations Coming Soon
-        // </div>
+      )}
+      {dataFromChild === "Wiki\nPathways" && (
+        <>
+          <Dropdown
+            className={termsLength}
+            selectedDropdown={selectedDropdown}
+            onChange={(e) => setSelectedDropdown(e.target.value)}
+            options={dropdownTerms}
+          />
+          {selectedDropdown !== "-- choose --" && (
+            <PlotlyBarChart
+              numTerms={numTerms}
+              chart={DHS_DOHHvsTar4_EC_WikiPathways}
+            />
+          )}
+        </>
+      )}
+      {dataFromChild === "Reactome" && (
+        <>
+          <Dropdown
+            className={DEGdropdownLength}
+            selectedDropdown={selectedDropdown}
+            onChange={(e) => setSelectedDropdown(e.target.value)}
+            options={dropdownOptions}
+          />
+          <Dropdown
+            className={termsLength}
+            selectedDropdown={selectedDropdown}
+            onChange={(e) => setSelectedDropdown(e.target.value)}
+            options={dropdownTerms}
+          />
+          {selectedChartData && <PlotlyBarChart chart={selectedChartData} />}
+        </>
       )}
     </div>
   );

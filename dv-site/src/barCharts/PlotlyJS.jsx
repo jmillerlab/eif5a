@@ -1,10 +1,13 @@
 import React, { useEffect, useRef } from "react";
 import Plotly from "plotly.js-dist-min";
-import DHS_DOHHvsTar4_EC_KEGG from "./DHS_DOHHvsTar4_EC/enrichment.KEGG.json";
-import DHS_DOHHvsTar4_EC_RCTM from "./DHS_DOHHvsTar4_EC/enrichment.RCTM.json";
+
 import "./PlotlyJS.css";
 
-const PlotlyBarChart = ({ numTerms }) => {
+const PlotlyBarChart = ({ numTerms, chart }) => {
+  // const graphsMap = {
+  //   DHS_DOHHvsTar4_EC: DHS_DOHHvsTar4_EC_WikiPathways,
+  // };
+  console.log(chart);
   const plotContainerRef = useRef(null);
 
   useEffect(() => {
@@ -14,24 +17,28 @@ const PlotlyBarChart = ({ numTerms }) => {
           parseFloat(b["enrichment score"]) - parseFloat(a["enrichment score"])
       );
       const topTerms = data.slice(0, numTerms);
-      const termDescriptions = topTerms.map((item) => item["term description"]);
 
-      const shortDescriptions = topTerms.map((item) =>
-        shortenDescription(item["term description"])
-      );
+      const uniqueDescriptions = topTerms.map((item, index) => {
+        const baseDescription = shortenDescription(item["term description"]);
+        const uniqueDescriptor = `${baseDescription} (${item[
+          "enrichment score"
+        ].toFixed(2)})`;
+        return uniqueDescriptor;
+      });
 
       const enrichmentScores = topTerms.map((item) =>
         parseFloat(item["enrichment score"])
       );
 
       const trace = {
-        y: enrichmentScores,
-        x: shortDescriptions,
-        // text: termDescriptions,
-        hovertemplate: termDescriptions,
-        name: "",
+        y: uniqueDescriptions,
+        x: enrichmentScores,
+        hovertemplate: topTerms.map(
+          (item) =>
+            `${item["term description"]}<br>Enrichment Score: %{x}<extra></extra>`
+        ),
         type: "bar",
-        orientation: "v",
+        orientation: "h",
         marker: {
           color: "skyblue",
           opacity: 0.75,
@@ -43,7 +50,7 @@ const PlotlyBarChart = ({ numTerms }) => {
         autosize: true,
         margin: {
           t: 25, // Top margin
-          l: 80, // Adjust for term descriptions
+          l: 300, // Adjust for term descriptions
           b: 300, // Bottom margin
           r: 125, // Right margin
         },
@@ -60,7 +67,7 @@ const PlotlyBarChart = ({ numTerms }) => {
         },
         yaxis: {
           //   title: "Term Description",
-          //   autorange: "reversed",
+          autorange: "reversed",
           showgrid: true,
           gridwidth: 1,
           gridcolor: "lightgrey",
@@ -81,7 +88,7 @@ const PlotlyBarChart = ({ numTerms }) => {
     };
 
     // createBarChart(DHS_DOHHvsTar4_EC_KEGG);
-    createBarChart(DHS_DOHHvsTar4_EC_RCTM);
+    createBarChart(chart);
 
     // Setup ResizeObserver to ensure the plot is responsive
     const resizeObserver = new ResizeObserver(() => {
