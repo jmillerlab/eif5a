@@ -64,7 +64,7 @@ export default function PlotlyGraph(props) {
               style={{
                 color: "black",
                 textAlign: "center",
-                marginTop: "50px",
+                marginTop: "10px",
                 marginBottom: "10px",
               }}
             >

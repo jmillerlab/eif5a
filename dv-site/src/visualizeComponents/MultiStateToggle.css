@@ -53,7 +53,7 @@
   border-radius: 40px;
   border: solid 1px rgb(66, 66, 66);
   box-shadow: 0px 10px 15px 0px rgba(121, 121, 121, 0.5);
-  transition: 0.5s; /* Add smooth transition effect */
+  transition: 0.3s; /* Add smooth transition effect */
 }
 
 @media (max-width: 1500px) {
