@@ -2,7 +2,8 @@ import React, { useEffect, useRef } from "react";
 import Plotly from "plotly.js-dist-min";
 import "./PlotlyGraph.css";
 
-const VolcanoPlot = ({ data, threshold }) => {
+const VolcanoPlot = ({ data, threshold, handlePlotlyClick }) => {
+  // console.log("IMPORTED DATA", data);
   const plotContainerRef = useRef(null);
 
   useEffect(() => {
@@ -14,8 +15,7 @@ const VolcanoPlot = ({ data, threshold }) => {
       const bonferroniCorrectedThreshold = userEnteredAlpha / numberOfTests;
       // Convert this corrected threshold to a -log10 scale for plotting
       const pValueThreshold = -Math.log10(bonferroniCorrectedThreshold);
-      console.log(numberOfTests);
-      console.log(pValueThreshold);
+
       const processedData = data.map((d) => ({
         ...d,
         "-log10(pvalue)": -Math.log10(d.pvalue), // Converting p-values for plotting
@@ -48,7 +48,12 @@ const VolcanoPlot = ({ data, threshold }) => {
           mode: "markers",
           marker: { color: colors[index], size: 3.5 },
           type: "scattergl",
-          customdata: categoryData.map((d) => [d.gene_name, d.gene_id]),
+          customdata: categoryData.map((d) => [
+            d.gene_name,
+            d.gene_id,
+            d.gene_biotype,
+            d.gene_description,
+          ]),
           hovertemplate:
             category === "Non-Significant"
               ? "gene_name=%{customdata[0]}<br>-log10(pvalue)=%{y}<br>log2FoldChange=%{x}<br>gene_id=%{customdata[1]}<extra></extra>"
@@ -108,6 +113,7 @@ const VolcanoPlot = ({ data, threshold }) => {
           responsive: true,
         }
       );
+      plotContainerRef.current.on("plotly_click", handlePlotlyClick);
     }
     const resizeObserver = new ResizeObserver(() => {
       Plotly.relayout(plotContainerRef.current, {
@@ -123,6 +129,10 @@ const VolcanoPlot = ({ data, threshold }) => {
     return () => {
       if (plotContainerRef.current) {
         resizeObserver.unobserve(plotContainerRef.current);
+        plotContainerRef.current.removeListener(
+          "plotly_click",
+          handlePlotlyClick
+        );
       }
     };
   }, [threshold, data]);

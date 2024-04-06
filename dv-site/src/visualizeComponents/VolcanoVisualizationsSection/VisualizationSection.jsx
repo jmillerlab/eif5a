@@ -7,13 +7,16 @@ import DownArrow from "../../generalComponents/DownArrow";
 import PlotlyBarChart from "../../barCharts/PlotlyJSGraph";
 import PlotlyJSPlot from "../../graphs/PlotlyJSPlot";
 import "../../graphs/PlotlyGraph.css";
+import GeneInfoComponent from "./GeneInfo";
+import { AnimatePresence } from "framer-motion";
+
 import {
   chartDataMapping,
   dropdownOptions,
   dropdownTerms,
   DEGdropdownLength,
   termsLength,
-  plotData,
+  // plotData,
 } from "./imports";
 
 export default function DEGListDatasets() {
@@ -21,11 +24,14 @@ export default function DEGListDatasets() {
   const [dataFromChild, setDataFromChild] = useState("All Genes");
   const [numTerms, setNumTerms] = useState(10);
   const [selectedChartData, setSelectedChartData] = useState(null);
-  const [selectedPlot, setSelectedPlot] = useState(null);
+  // const [selectedPlot, setSelectedPlot] = useState(null);
   const [mainCategory, setMainCategory] = useState("DHS_DOHHvsWT_EC");
   const [subCategory, setSubCategory] = useState("KEGG");
   const [pValueThreshold, setpValThreshold] = useState("0.05");
   const [tempThreshold, setTempThreshold] = useState("");
+  const [showGeneInfo, setShowGeneInfo] = useState(null);
+  const [clickedPointData, setClickedPointData] = useState(null);
+  const [graphModule, setGraphModule] = useState(null);
 
   const handleDataFromChild = (data) => {
     if (data !== "KEGG" && data !== "Reactome") {
@@ -48,13 +54,14 @@ export default function DEGListDatasets() {
       selectedDropdown !== "-- choose --" ? selectedDropdown : null;
     if (mainCategory) {
       const chartData = chartDataMapping[mainCategory]?.[subCategory];
-      const plot = plotData[mainCategory];
+      // const plot = plotData[mainCategory];
       setSelectedChartData(chartData);
-      setSelectedPlot(plot);
+      // setSelectedPlot(plot);
     } else {
       setSelectedChartData(null);
     }
   }, [selectedDropdown, subCategory]);
+  // console.log("SELECTED PLOT", selectedPlot);
 
   const handleMainCategoryChange = (e) => {
     const value = e.target.value;
@@ -68,8 +75,8 @@ export default function DEGListDatasets() {
     setNumTerms(parseInt(value));
   };
 
-  console.log(pValueThreshold);
-  console.log(tempThreshold);
+  // console.log(pValueThreshold);
+  // console.log(tempThreshold);
   const handleThresholdChange = (e) => {
     setTempThreshold(e.target.value);
   };
@@ -78,31 +85,117 @@ export default function DEGListDatasets() {
     setpValThreshold(tempThreshold);
   };
 
+  const handlePlotlyClick = (data) => {
+    const { points } = data;
+    const clickedPoint = points[0];
+    setClickedPointData({
+      geneName: clickedPoint.customdata[0],
+      geneId: clickedPoint.customdata[1],
+      geneBiotype: clickedPoint.customdata[2],
+      geneDescription: clickedPoint.customdata[3],
+      log2FoldChange: clickedPoint.x,
+      log10pValue: clickedPoint.y,
+    });
+    setShowGeneInfo(true);
+  };
+  const handleCloseClick = () => {
+    setShowGeneInfo(false);
+    console.log(showGeneInfo);
+  };
+
+  useEffect(() => {
+    async function loadGraphData() {
+      if (dataFromChild === "All Genes" && selectedDropdown != "-- choose --") {
+        let module;
+        switch (selectedDropdown) {
+          case "DHS_DOHHvsWT_EC":
+            module = await import(
+              "../../graphs/DHS_DOHHvsWT_EC/DHS_DOHHvsWT_EC.DEG.all.json"
+            );
+
+            break;
+          case "DHS_DOHHvsTar4_EC":
+            module = await import(
+              "../../graphs/DHS_DOHHvsTar4_EC/DHS_DOHHvsTar4_EC.DEG.all.json"
+            );
+            break;
+          case "eIF5A_DDvsDHS_DOHH":
+            module = await import(
+              "../../graphs/eIF5A_DDvsDHS_DOHH/eIF5A_DDvsDHS_DOHH.DEG.all.json"
+            );
+            break;
+
+          case "eIF5A_DDvseIF5A":
+            module = await import(
+              "../../graphs/eIF5A_DDvseIF5A/eIF5A_DDvseIF5A.DEG.all.json"
+            );
+            break;
+          case "eIF5A_DDvsK50A_DD":
+            module = await import(
+              "../../graphs/eIF5A_DDvsK50A_DD/eIF5A_DDvsK50A_DD.DEG.all.json"
+            );
+            break;
+          case "eIF5A_DDvsTar4_EC":
+            module = await import(
+              "../../graphs/eIF5A_DDvsTar4_EC/eIF5A_DDvsTar4_EC.DEG.all.csv.json"
+            );
+            break;
+          case "eIF5A_DDvsWT_EC":
+            module = await import(
+              "../../graphs/eIF5A_DDvsWT_EC/eIF5A_DDvsWT_EC.DEG.all.json"
+            );
+            break;
+          case "eIF5AvsTar4_EC":
+            module = await import(
+              "../../graphs/eIF5AvsTar4_EC/eIF5AvsTar4_EC.DEG.all.json"
+            );
+            break;
+          case "eIF5AvsWT_EC":
+            module = await import(
+              "../../graphs/eIF5AvsWT_EC/eIF5AvsWT_EC.DEG.all.json"
+            );
+            break;
+          case "K50A_DDvsDHS_DOHH":
+            module = await import(
+              "../../graphs/K50A_DDvsDHS_DOHH/K50A_DDvsDHS_DOHH.DEG.all.json"
+            );
+            break;
+          case "K50A_DDvsTar4_EC":
+            module = await import(
+              "../../graphs/K50A_DDvsTar4_EC/K50A_DDvsTar4_EC.DEG.all.json"
+            );
+            break;
+          case "K50A_DDvsWT_EC":
+            module = await import(
+              "../../graphs/K50A_DDvsWT_EC/K50A_DDvsWT_EC.DEG.all.json"
+            );
+            break;
+          case "Tar4_ECvsWT_EC":
+            module = await import(
+              "../../graphs/Tar4_ECvsWT_EC/Tar4_ECvsWT_EC.DEG.all.json"
+            );
+            break;
+          default:
+            module = null;
+        }
+
+        setGraphModule(module.default);
+      }
+    }
+    loadGraphData();
+  }, [dataFromChild, selectedDropdown, graphModule]);
+
+  useEffect(() => {
+    console.log("graphModule after state update:", graphModule);
+  }, [graphModule]);
+
   return (
     <div className="DEG-container-expanded">
       <MultiStateToggle sendDataToParent={handleDataFromChild} />
       {dataFromChild === "All Genes" && (
         <>
-          <div
-            style={{
-              color: "black",
-              width: "100%",
-              height: 100,
-              textAlign: "center",
-              marginTop: 15,
-              display: "flex",
-              alignItems: "center",
-              flexDirection: "column",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flexDirection: "column",
-              }}
-            >
+          <div className="all-genes-container">
+            <div className="view-pathway">
               <h3 style={{ margin: 30 }}>View a Pathway</h3>
               <DownArrow />
             </div>
@@ -117,24 +210,8 @@ export default function DEGListDatasets() {
 
             {selectedChartData && (
               <>
-                <div
-                  style={{
-                    marginTop: 5,
-                    display: "flex",
-                    flexDirection: "row",
-                    width: 450,
-                    // borderRadius: 30,
-                  }}
-                >
-                  <div
-                    style={{
-                      marginTop: 20,
-                      width: 500,
-                      height: 100,
-                      display: "flex",
-                      flexDirection: "column",
-                    }}
-                  >
+                <div className="chart-container">
+                  <div className="sub-chart-container">
                     <h3
                       style={{
                         color: "black",
@@ -146,15 +223,7 @@ export default function DEGListDatasets() {
                     >
                       Enter the significance level. Typically set at 0.05.{" "}
                     </h3>
-                    <div
-                      style={{
-                        margin: "20px",
-                        display: "flex",
-                        flexDirection: "row",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                    >
+                    <div className="threshold-input-container">
                       <input
                         type="number"
                         value={tempThreshold}
@@ -166,22 +235,15 @@ export default function DEGListDatasets() {
                         min="-2"
                         max="2"
                         step="0.01"
-                        style={{
-                          // marginRight: "5px",
-                          width: 70,
-                          height: 40,
-                          color: "black",
-                          backgroundColor: "white",
-                          border: "solid",
-                          borderWidth: 1,
-                          padding: 7,
-                          borderRadius: 7,
-                          borderColor: "gray",
-                          fontSize: 15,
-                          textAlign: "center",
-                          boxShadow: "0px 10px 15px 0px rgba(39, 39, 39, 0.15)",
-                        }}
+                        className="threshold-input-style"
                       />
+
+                      <button
+                        className="threshold-submit-button"
+                        onClick={handleSubmitThreshold}
+                      >
+                        Submit
+                      </button>
                       <span className="tooltip">
                         ?
                         <span className="tooltip-text">
@@ -190,23 +252,6 @@ export default function DEGListDatasets() {
                           will be adjusted to account for multiple comparisons.
                         </span>
                       </span>
-
-                      <button
-                        style={{
-                          backgroundColor: "gray",
-                          width: 55,
-                          height: 40,
-                          borderRadius: 7,
-                          marginLeft: 15,
-                          border: "solid",
-                          borderWidth: 1,
-                          borderColor: "black",
-                          boxShadow: "0px 10px 15px 0px rgba(39, 39, 39, 0.15)",
-                        }}
-                        onClick={handleSubmitThreshold}
-                      >
-                        Submit
-                      </button>
                     </div>
                   </div>
                 </div>
@@ -214,24 +259,45 @@ export default function DEGListDatasets() {
                   style={{
                     color: "black",
                     textAlign: "center",
-                    marginTop: "70px",
+                    marginTop: "30px",
                     // marginBottom: "10px",
                   }}
                 >
                   {selectedDropdown}
                 </p>
-                <PlotlyJSPlot data={selectedPlot} threshold={pValueThreshold} />
+                <AnimatePresence>
+                  {showGeneInfo && (
+                    <GeneInfoComponent
+                      data={clickedPointData}
+                      onClose={handleCloseClick} // Pass handleCloseClick correctly here
+                    />
+                  )}
+                </AnimatePresence>
+                {graphModule ? (
+                  <PlotlyJSPlot
+                    data={graphModule}
+                    threshold={pValueThreshold}
+                    handlePlotlyClick={handlePlotlyClick}
+                  />
+                ) : (
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      width: "100%",
+                      height: "100px",
+                      color: "black",
+                      fontSize: "30px",
+                      textAlign: "center",
+                    }}
+                  >
+                    Loading...
+                  </div>
+                )}
               </>
             )}
           </div>
-          {/* <iframe
-            src="https://version-12-0.string-db.org/cgi/globalenrichment?networkId=bBmGA3kwle9n"
-            title="Embedded Page"
-            width="100%"
-            height="1150px"
-            frameBorder="0"
-            scrolling="auto"
-          ></iframe> */}
         </>
       )}
       {dataFromChild === "KEGG" && (
@@ -298,4 +364,14 @@ export default function DEGListDatasets() {
       )}
     </div>
   );
+}
+{
+  /* <iframe
+            src="https://version-12-0.string-db.org/cgi/globalenrichment?networkId=bBmGA3kwle9n"
+            title="Embedded Page"
+            width="100%"
+            height="1150px"
+            frameBorder="0"
+            scrolling="auto"
+          ></iframe> */
 }

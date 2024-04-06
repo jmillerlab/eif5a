@@ -50,35 +50,35 @@ import Tar4_KEGG from "../../barCharts/Tar4_ECvsWT_EC/enrichment.KEGG.json";
 import Tar4_RCTM from "../../barCharts/Tar4_ECvsWT_EC/enrichment.RCTM.json";
 import Tar4_WikiPathways from "../../barCharts/Tar4_ECvsWT_EC/enrichment.WikiPathways.json";
 
-import DHS_DOHHvsWT_EC from "../../graphs/DHS_DOHHvsWT_EC/DHS_DOHHvsWT_EC.DEG.all.json";
-import DHS_DOHHvsTar4_EC from "../../graphs/DHS_DOHHvsTar4_EC/DHS_DOHHvsTar4_EC.DEG.all.json";
-import EI1 from "../../graphs/eIF5A_DDvsDHS_DOHH/eIF5A_DDvsDHS_DOHH.DEG.all.json";
-import EI2 from "../../graphs/eIF5A_DDvseIF5A/eIF5A_DDvseIF5A.DEG.all.json";
-import EI3 from "../../graphs/eIF5A_DDvsK50A_DD/eIF5A_DDvsK50A_DD.DEG.all.json";
-import EI4 from "../../graphs/eIF5A_DDvsTar4_EC/eIF5A_DDvsTar4_EC.DEG.all.csv.json";
-import EI5 from "../../graphs/eIF5A_DDvsWT_EC/eIF5A_DDvsWT_EC.DEG.all.json";
-import EI6 from "../../graphs/eIF5AvsTar4_EC/eIF5AvsTar4_EC.DEG.all.json";
-import EI7 from "../../graphs/eIF5AvsWT_EC/eIF5AvsWT_EC.DEG.all.json";
-import K50A_DDvsDHS_DOHH from "../../graphs/K50A_DDvsDHS_DOHH/K50A_DDvsDHS_DOHH.DEG.all.json";
-import K50A_DDvsTar4_EC from "../../graphs/K50A_DDvsTar4_EC/K50A_DDvsTar4_EC.DEG.all.json";
-import K50A_DDvsWT_EC from "../../graphs/K50A_DDvsWT_EC/K50A_DDvsWT_EC.DEG.all.json";
-import Tar4_ECvsWT_EC from "../../graphs/Tar4_ECvsWT_EC/Tar4_ECvsWT_EC.DEG.all.json";
+// import DHS_DOHHvsWT_EC from "../../graphs/DHS_DOHHvsWT_EC/DHS_DOHHvsWT_EC.DEG.all.json";
+// import DHS_DOHHvsTar4_EC from "../../graphs/DHS_DOHHvsTar4_EC/DHS_DOHHvsTar4_EC.DEG.all.json";
+// import EI1 from "../../graphs/eIF5A_DDvsDHS_DOHH/eIF5A_DDvsDHS_DOHH.DEG.all.json";
+// import EI2 from "../../graphs/eIF5A_DDvseIF5A/eIF5A_DDvseIF5A.DEG.all.json";
+// import EI3 from "../../graphs/eIF5A_DDvsK50A_DD/eIF5A_DDvsK50A_DD.DEG.all.json";
+// import EI4 from "../../graphs/eIF5A_DDvsTar4_EC/eIF5A_DDvsTar4_EC.DEG.all.csv.json";
+// import EI5 from "../../graphs/eIF5A_DDvsWT_EC/eIF5A_DDvsWT_EC.DEG.all.json";
+// import EI6 from "../../graphs/eIF5AvsTar4_EC/eIF5AvsTar4_EC.DEG.all.json";
+// import EI7 from "../../graphs/eIF5AvsWT_EC/eIF5AvsWT_EC.DEG.all.json";
+// import K50A_DDvsDHS_DOHH from "../../graphs/K50A_DDvsDHS_DOHH/K50A_DDvsDHS_DOHH.DEG.all.json";
+// import K50A_DDvsTar4_EC from "../../graphs/K50A_DDvsTar4_EC/K50A_DDvsTar4_EC.DEG.all.json";
+// import K50A_DDvsWT_EC from "../../graphs/K50A_DDvsWT_EC/K50A_DDvsWT_EC.DEG.all.json";
+// import Tar4_ECvsWT_EC from "../../graphs/Tar4_ECvsWT_EC/Tar4_ECvsWT_EC.DEG.all.json";
 
-const plotData = {
-  DHS_DOHHvsWT_EC: DHS_DOHHvsWT_EC,
-  DHS_DOHHvsTar4_EC: DHS_DOHHvsTar4_EC,
-  eIF5A_DDvsDHS_DOHH: EI1,
-  eIF5A_DDvseIF5A: EI2,
-  eIF5A_DDvsK50A_DD: EI3,
-  eIF5A_DDvsTar4_EC: EI4,
-  eIF5A_DDvsWT_EC: EI5,
-  eIF5AvsTar4_EC: EI6,
-  eIF5AvsWT_EC: EI7,
-  K50A_DDvsDHS_DOHH: K50A_DDvsDHS_DOHH,
-  K50A_DDvsTar4_EC: K50A_DDvsTar4_EC,
-  K50A_DDvsWT_EC: K50A_DDvsWT_EC,
-  Tar4_ECvsWT_EC: Tar4_ECvsWT_EC,
-};
+// const plotData = {
+//   DHS_DOHHvsWT_EC: DHS_DOHHvsWT_EC,
+//   DHS_DOHHvsTar4_EC: DHS_DOHHvsTar4_EC,
+//   eIF5A_DDvsDHS_DOHH: EI1,
+//   eIF5A_DDvseIF5A: EI2,
+//   eIF5A_DDvsK50A_DD: EI3,
+//   eIF5A_DDvsTar4_EC: EI4,
+//   eIF5A_DDvsWT_EC: EI5,
+//   eIF5AvsTar4_EC: EI6,
+//   eIF5AvsWT_EC: EI7,
+//   K50A_DDvsDHS_DOHH: K50A_DDvsDHS_DOHH,
+//   K50A_DDvsTar4_EC: K50A_DDvsTar4_EC,
+//   K50A_DDvsWT_EC: K50A_DDvsWT_EC,
+//   Tar4_ECvsWT_EC: Tar4_ECvsWT_EC,
+// };
 
 const chartDataMapping = {
   DHS_DOHHvsWT_EC: {
@@ -177,7 +177,7 @@ const termsLength = "terms";
 
 export {
   chartDataMapping,
-  plotData,
+  // plotData,
   dropdownOptions,
   DEGdropdownLength,
   dropdownTerms,
