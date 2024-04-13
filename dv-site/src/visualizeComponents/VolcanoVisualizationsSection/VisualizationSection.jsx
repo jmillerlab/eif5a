@@ -8,21 +8,20 @@ import PlotlyBarChart from "../../barCharts/PlotlyJSGraph";
 import PlotlyJSPlot from "../../graphs/PlotlyJSPlot";
 import "../../graphs/PlotlyGraph.css";
 import GeneInfoComponent from "./GeneInfo";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, useScroll } from "framer-motion";
+import RegulationInfo from "./RegulationInfo";
 
 import {
   chartDataMapping,
   dropdownOptions,
-  dropdownTerms,
   DEGdropdownLength,
   termsLength,
-  // plotData,
 } from "./imports";
 
 export default function DEGListDatasets() {
   const [selectedDropdown, setSelectedDropdown] = useState("-- choose --");
   const [dataFromChild, setDataFromChild] = useState("All Genes");
-  const [numTerms, setNumTerms] = useState(10);
+  const [numTerms, setNumTerms] = useState(0);
   const [selectedChartData, setSelectedChartData] = useState(null);
   // const [selectedPlot, setSelectedPlot] = useState(null);
   const [mainCategory, setMainCategory] = useState("DHS_DOHHvsWT_EC");
@@ -32,20 +31,23 @@ export default function DEGListDatasets() {
   const [showGeneInfo, setShowGeneInfo] = useState(null);
   const [clickedPointData, setClickedPointData] = useState(null);
   const [graphModule, setGraphModule] = useState(null);
+  const [barChartData, setBarChartData] = useState(null);
+
+  const [label, setLabel] = useState("");
+  const [label2, setLabel2] = useState("");
+  const [label3, setLabel3] = useState("");
 
   const handleDataFromChild = (data) => {
-    if (data !== "KEGG" && data !== "Reactome") {
+    if (data !== "KEGG" && data !== "Reactome" && data !== "STRING") {
       setSubCategory("WikiPathways");
     } else {
       setSubCategory(data);
     }
     setDataFromChild(data);
     if (data === "All Genes") {
-      // setSelectedDropdown("-- choose --");
       setpValThreshold(0.05);
     } else {
       setSelectedDropdown("DHS_DOHHvsWT_EC");
-      setNumTerms(10);
     }
   };
 
@@ -54,14 +56,45 @@ export default function DEGListDatasets() {
       selectedDropdown !== "-- choose --" ? selectedDropdown : null;
     if (mainCategory) {
       const chartData = chartDataMapping[mainCategory]?.[subCategory];
-      // const plot = plotData[mainCategory];
       setSelectedChartData(chartData);
-      // setSelectedPlot(plot);
+      getDataLength(chartData);
     } else {
       setSelectedChartData(null);
     }
   }, [selectedDropdown, subCategory]);
-  // console.log("SELECTED PLOT", selectedPlot);
+  console.log(label, label2, label3);
+  const getDataLength = (selectedChartData) => {
+    if (selectedChartData != null) {
+      const dataLength = selectedChartData.length;
+      console.log(dataLength);
+
+      if (dataLength < 20 && dataLength > 10) {
+        console.log("less than 20");
+        setLabel(10);
+        setLabel2(dataLength);
+        setLabel3(null);
+        console.log(label2);
+        return;
+      } else if (dataLength <= 10) {
+        console.log("less than 10");
+        setLabel(dataLength);
+        setLabel2(null);
+        setLabel3(null);
+        return;
+      } else if (dataLength >= 20 && dataLength < 50) {
+        console.log("less than 50");
+        setLabel(10);
+        setLabel2(20);
+        setLabel3(dataLength);
+        return;
+      } else {
+        setLabel("10");
+        setLabel2("20");
+        setLabel3("50");
+        return;
+      }
+    }
+  };
 
   const handleMainCategoryChange = (e) => {
     const value = e.target.value;
@@ -75,8 +108,6 @@ export default function DEGListDatasets() {
     setNumTerms(parseInt(value));
   };
 
-  // console.log(pValueThreshold);
-  // console.log(tempThreshold);
   const handleThresholdChange = (e) => {
     setTempThreshold(e.target.value);
   };
@@ -102,6 +133,30 @@ export default function DEGListDatasets() {
     setShowGeneInfo(false);
     console.log(showGeneInfo);
   };
+
+  const handleChartClick = (eventData) => {
+    const clickedPoint = eventData.points[0];
+
+    console.log("Clicked point data:");
+    console.log("Label:", clickedPoint.label); // Accessing the label
+    console.log("X Value:", clickedPoint.x); // Accessing x value
+    console.log("Y Value:", clickedPoint.y); // Accessing y value
+    console.log("Enrichment Score:", clickedPoint.value);
+    setBarChartData({
+      barLabel: clickedPoint.label,
+      xVal: clickedPoint.x,
+      yVal: clickedPoint.y,
+      enrichmentScore: clickedPoint.enrichmentScore,
+    });
+    setShowGeneInfo(true);
+  };
+
+  const dropdownTerms = [
+    { label: "-- choose --", value: "-- choose --" },
+    { label: label, value: 10 },
+    { label: label2, value: 20 },
+    { label: label3, value: 50 },
+  ];
 
   useEffect(() => {
     async function loadGraphData() {
@@ -311,15 +366,25 @@ export default function DEGListDatasets() {
           <Dropdown
             className={termsLength}
             selectedDropdown={numTerms.toString()}
-            onChange={(e) => setNumTerms(parseInt(e.target.value, 10))}
+            onChange={(e) => setNumTerms(parseInt(e.target.value))}
             options={dropdownTerms}
           />
+          {/* {showGeneInfo && console.log("clicked")} */}
+          {showGeneInfo && (
+            <AnimatePresence>
+              <RegulationInfo
+                barChartData={barChartData}
+                onClose={handleCloseClick}
+              />
+            </AnimatePresence>
+          )}
           {selectedChartData && (
             <PlotlyBarChart
               chart={selectedChartData}
               numTerms={numTerms}
               mainCategory={mainCategory}
               subCategory={subCategory}
+              handleChartClick={handleChartClick}
             />
           )}
         </>
@@ -335,11 +400,23 @@ export default function DEGListDatasets() {
           <Dropdown
             className={termsLength}
             selectedDropdown={numTerms.toString()}
-            onChange={(e) => setNumTerms(parseInt(e.target.value, 10))}
+            onChange={(e) => setNumTerms(parseInt(e.target.value))}
             options={dropdownTerms}
           />
+          {showGeneInfo && (
+            <AnimatePresence>
+              <RegulationInfo
+                barChartData={barChartData}
+                onClose={handleCloseClick}
+              />
+            </AnimatePresence>
+          )}
           {selectedChartData && (
-            <PlotlyBarChart chart={selectedChartData} numTerms={numTerms} />
+            <PlotlyBarChart
+              chart={selectedChartData}
+              numTerms={numTerms}
+              handleChartClick={handleChartClick}
+            />
           )}
         </>
       )}
@@ -357,21 +434,44 @@ export default function DEGListDatasets() {
             onChange={handleTermChange}
             options={dropdownTerms}
           />
+          {showGeneInfo && (
+            <AnimatePresence>
+              <RegulationInfo
+                barChartData={barChartData}
+                onClose={handleCloseClick}
+              />
+            </AnimatePresence>
+          )}
           {selectedChartData && (
-            <PlotlyBarChart chart={selectedChartData} numTerms={numTerms} />
+            <PlotlyBarChart
+              chart={selectedChartData}
+              numTerms={numTerms}
+              handleChartClick={handleChartClick}
+            />
           )}
         </>
       )}
-    </div>
-  );
-}
-{
-  /* <iframe
+      {dataFromChild === "STRING" && (
+        <div
+          style={{
+            height: "1250px",
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            margin: "30px",
+          }}
+        >
+          <iframe
             src="https://version-12-0.string-db.org/cgi/globalenrichment?networkId=bBmGA3kwle9n"
             title="Embedded Page"
-            width="100%"
-            height="1150px"
+            width="95%"
+            height="1250px"
             frameBorder="0"
             scrolling="auto"
-          ></iframe> */
+          ></iframe>
+        </div>
+      )}
+    </div>
+  );
 }

@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import Plotly from "plotly.js-dist-min";
 import "./PlotlyJS.css";
 
-const PlotlyBarChart = ({ numTerms, chart }) => {
+const PlotlyBarChart = ({ numTerms, chart, handleChartClick }) => {
   const plotContainerRef = useRef(null);
 
   useEffect(() => {
@@ -82,6 +82,7 @@ const PlotlyBarChart = ({ numTerms, chart }) => {
       Plotly.newPlot(plotContainerRef.current, [trace], layout, config, {
         responsive: true,
       });
+      plotContainerRef.current.on("plotly_click", handleChartClick);
     };
 
     createBarChart(chart);
