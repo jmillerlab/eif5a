@@ -13,29 +13,40 @@ const PlotlyBarChart = ({ numTerms, chart, handleChartClick }) => {
       );
       const topTerms = data.slice(0, numTerms);
 
-      const uniqueDescriptions = topTerms.map((item, index) => {
-        const baseDescription = shortenDescription(item["term description"]);
-        const uniqueDescriptor = `${baseDescription} (${item[
-          "enrichment score"
-        ].toFixed(2)})`;
-        return uniqueDescriptor;
+      // Grouping by enrichment score and adjusting the y-axis labels to avoid overlap
+      const enrichmentScores = new Map();
+      topTerms.forEach((item) => {
+        const score = item["enrichment score"].toFixed(2);
+        if (!enrichmentScores.has(score)) {
+          enrichmentScores.set(score, []);
+        }
+        enrichmentScores.get(score).push(item);
       });
 
-      const enrichmentScores = topTerms.map((item) =>
-        parseFloat(item["enrichment score"])
-      );
+      const yLabels = [];
+      const xValues = [];
+      const hoverText = [];
+
+      enrichmentScores.forEach((items, score) => {
+        items.forEach((item, index) => {
+          const baseDescription = shortenDescription(item["term description"]);
+          const uniqueDescriptor = `${baseDescription} (${score})`;
+          yLabels.push(`${uniqueDescriptor}${index > 0 ? " " + index : ""}`); // Adjust label if there are duplicates
+          xValues.push(parseFloat(score));
+          hoverText.push(
+            `${item["term description"]}<br>Enrichment Score: ${score}<extra></extra>`
+          );
+        });
+      });
 
       const trace = {
-        y: uniqueDescriptions,
-        x: enrichmentScores,
-        hovertemplate: topTerms.map(
-          (item) =>
-            `${item["term description"]}<br>Enrichment Score: %{x}<extra></extra>`
-        ),
+        y: yLabels,
+        x: xValues,
+        hovertemplate: hoverText,
         type: "bar",
         orientation: "h",
         marker: {
-          color: "skyblue",
+          color: "darkblue",
           opacity: 0.75,
         },
       };

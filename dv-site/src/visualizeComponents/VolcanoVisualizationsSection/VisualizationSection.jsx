@@ -62,7 +62,10 @@ export default function DEGListDatasets() {
       setSelectedChartData(null);
     }
   }, [selectedDropdown, subCategory]);
-  console.log(label, label2, label3);
+
+  console.log("main category", mainCategory);
+  console.log("sub category", subCategory);
+  // console.log(label, label2, label3);
   const getDataLength = (selectedChartData) => {
     if (selectedChartData != null) {
       const dataLength = selectedChartData.length;
@@ -329,11 +332,20 @@ export default function DEGListDatasets() {
                   )}
                 </AnimatePresence>
                 {graphModule ? (
-                  <PlotlyJSPlot
-                    data={graphModule}
-                    threshold={pValueThreshold}
-                    handlePlotlyClick={handlePlotlyClick}
-                  />
+                  <>
+                    <PlotlyJSPlot
+                      data={graphModule}
+                      threshold={pValueThreshold}
+                      handlePlotlyClick={handlePlotlyClick}
+                    />
+                    <PlotlyBarChart
+                      chart={selectedChartData}
+                      numTerms="50"
+                      mainCategory={mainCategory}
+                      subCategory="AllGenes"
+                      handleChartClick={handleChartClick}
+                    />
+                  </>
                 ) : (
                   <div
                     style={{

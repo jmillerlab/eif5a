@@ -55,6 +55,8 @@ df38 = pd.read_csv('Tar4_ECvsWT_EC/enrichment.WikiPathways.tsv', sep='\t')
 
 
 
+df39 = pd.read_csv('DHS_DOHHvsTar4_EC/enrichment.NetworkNeighborAL.tsv', sep='\t')
+df39.to_json('DHS_DOHHvsTar4_EC/enrichment.NetworkNeighborAL.json', orient='records', lines=False)
 
 
 

@@ -4,6 +4,17 @@ import CustomDropDown from "../CustomDropDown";
 import { motion as m } from "framer-motion";
 // import Venn from "./visualizePage/VennDiagrams";
 export default function About() {
+  const data = {
+    nodes: [
+      { id: "node1", label: "Node 1" },
+      { id: "node2", label: "Node 2" },
+      // Add more nodes as needed
+    ],
+    links: [
+      { source: "node1", target: "node2" },
+      // Add more links as needed
+    ],
+  };
   return (
     <>
       <div className="background">
@@ -32,10 +43,7 @@ export default function About() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.75, ease: "easeOut" }}
-                >
-                  Please send us a message if you have questions or would like
-                  to collaborate with our lab.
-                </m.div>
+                ></m.div>
               </ul>
             </h3>
           </div>

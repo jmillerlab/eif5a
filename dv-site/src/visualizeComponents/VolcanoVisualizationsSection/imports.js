@@ -50,6 +50,8 @@ import Tar4_KEGG from "../../barCharts/Tar4_ECvsWT_EC/enrichment.KEGG.json";
 import Tar4_RCTM from "../../barCharts/Tar4_ECvsWT_EC/enrichment.RCTM.json";
 import Tar4_WikiPathways from "../../barCharts/Tar4_ECvsWT_EC/enrichment.WikiPathways.json";
 
+import STRINGchart1 from "../../barCharts/DHS_DOHHvsTar4_EC/enrichment.NetworkNeighborAL.json";
+
 const chartDataMapping = {
   DHS_DOHHvsWT_EC: {
     KEGG: DHS_DOHHvsWT_EC_KEGG,
@@ -60,6 +62,7 @@ const chartDataMapping = {
     KEGG: DHS_DOHHvsTar4_EC_KEGG,
     Reactome: DHS_DOHHvsTar4_EC_RCTM,
     WikiPathways: DHS_DOHHvsTar4_EC_WikiPathways,
+    AllGenes: STRINGchart1,
   },
   eIF5A_DDvsDHS_DOHH: {
     KEGG: EIf5A1_KEGG,
