@@ -7,16 +7,19 @@ export default function Dropdown({
   options,
   className,
 }) {
+  console.log(selectedDropdown);
+  const filteredOptions = options.filter((option) => option.label !== null);
+
   return (
     <div style={{ margin: 30 }}>
       <select
         className={className}
-        selectedDropdown={selectedDropdown}
+        value={selectedDropdown}
         onChange={onChange}
       >
-        {options.map((option, index) => (
-          <option key={index} className="option">
-            {option}
+        {filteredOptions.map((option, index) => (
+          <option key={index} value={option.label} className="option">
+            {option.label}
           </option>
         ))}
       </select>

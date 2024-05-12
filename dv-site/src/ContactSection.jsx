@@ -10,7 +10,6 @@ export default function ContactSection() {
     <div className="">
       <div className="form-container">
         <div className="contact-title">
-          {/* <p style={{ fontSize: 17 }}>GET IN TOUCH</p> */}
           <p style={{ fontSize: 27 }}>CONTACT</p>
         </div>
         <div className="form-inner-container">
@@ -18,7 +17,10 @@ export default function ContactSection() {
             <div className="form-wrapper">
               <div className="left-content">
                 <LeftContent content={"1(205)-628-7519"} icon={PhoneIcon} />
-                <LeftContent content={"somemail@gmail.com"} icon={EmailIcon} />
+                <LeftContent
+                  content={"justin.miller@uky.edu"}
+                  icon={EmailIcon}
+                />
                 <LeftContent
                   content={"University of Kentucky"}
                   icon={LocationIcon}

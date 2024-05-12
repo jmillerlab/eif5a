@@ -1,8 +1,3 @@
-/* .main-container {
-  display: flex;
-  flex-direction: column;
-  transition: 1s;
-} */
 .DEG-box {
   display: flex;
   flex-direction: column;
@@ -10,21 +5,10 @@
   align-items: center;
   width: 100vw;
   padding-top: 0%;
-  margin-top: 0vw;
-  min-width: 800px;
-  margin-bottom: 0vw;
+  margin-top: 15px;
+  min-width: 500px;
+  margin-bottom: 50px;
   /* overflow: hidden; */
-}
-/* s
-.plot-spacing {
-  margin: 0px;
-} */
-
-@media only screen and (max-width: 800px) {
-  .DEG-box {
-    width: 100%; /* Make the plots take full width */
-    min-width: auto; /* Reset min-width to allow full width */
-  }
 }
 
 .DEG-container {
@@ -43,9 +27,8 @@
   flex-direction: column;
   align-items: center;
   width: auto;
-  min-width: 800px; /* Reset min-width to allow full width */
-
-  padding: 30px;
+  min-width: 500px;
+  /* padding: 30px; */
   height: auto;
   background-color: rgb(255, 255, 255);
   transition: height 0.5s;
@@ -54,13 +37,7 @@
   /* min-height: 700px; */
   transition: 0.6s;
 }
-/* .plot-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  height: 80%;
-} */
+
 .drop-down-container {
   margin-top: 0.3vw;
   display: flex;
@@ -70,8 +47,152 @@
   position: relative; /* Add this line */
   z-index: 1; /* Ensure dropdown appears above other elements */
 }
+.threshold-submit-button {
+  background-color: gray;
+  width: 55px;
+  height: 35px;
+  border-radius: 4px;
+  margin-left: 1px;
+  border: solid;
+  border-width: 1px;
+  border-color: black;
+  box-shadow: 0px 10px 15px 0px rgba(39, 39, 39, 0.2);
+  transition: 0.1s;
+}
+.threshold-submit-button:hover {
+  background-color: rgb(97, 97, 97);
+  transition: 0.1s;
+}
+.threshold-submit-button:active {
+  background-color: rgb(58, 58, 58);
+  border-color: black;
+  box-shadow: 0px 0px 0px 0px rgba(39, 39, 39, 0.2);
+  color: gray;
+  transition: 0.1s;
+}
 
-/* Add this style to create space below the dropdown */
-.content-below-dropdown {
-  /* margin-top: 50px;  */
+@media only screen and (max-width: 500px) {
+  .DEG-box {
+    width: 100%; /* Make the plots take full width */
+    min-width: auto; /* Reset min-width to allow full width */
+  }
+}
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  color: rgb(107, 107, 107);
+  border-bottom: 2px dotted black;
+  cursor: help; /* Changes cursor to indicate help/info */
+  width: 20px;
+  height: 25px;
+  margin: 10px;
+  margin-right: 0px;
+  margin-top: 12px;
+  /* opacity: 0.45; */
+  /* padding-top: px; */
+  /* background-color: rgb(228, 228, 228); */
+  border: dotted rgb(71, 71, 71) 1px;
+  border-radius: 2px;
+  /* box-shadow: 0px 10px 15px 0px rgba(39, 39, 39, 0.15); */
+  text-align: center;
+}
+
+/* Tooltip text */
+.tooltip .tooltip-text {
+  visibility: hidden;
+  width: 220px;
+  background-color: rgb(255, 255, 255);
+  color: #000000;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  bottom: auto; /* Remove or set to 'auto' */
+  top: 125%; /* Position the tooltip above the parent */
+  border: solid 1px black;
+  padding: 10px;
+  left: 50%;
+  margin-left: -110px; /* Use half of the width value to align it horizontally */
+
+  /* Fade in tooltip - animations (optional) */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.tooltip .tooltip-text::after {
+  content: " ";
+  position: absolute;
+  bottom: 100%; /* Move arrow to the bottom of the tooltip box */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border: solid 1px black;
+
+  border-color: transparent transparent rgb(206, 206, 206) transparent; /* Arrow pointing downwards */
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+.all-genes-container {
+  color: black;
+  width: 100%;
+  height: 100;
+  text-align: center;
+  margin-top: 15;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.view-pathway {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.chart-container {
+  margin-top: 5;
+  display: flex;
+  flex-direction: row;
+  width: 450;
+  border-radius: 30;
+}
+.sub-chart-container {
+  margin-top: 20;
+  width: 500;
+  height: 100;
+  display: flex;
+  flex-direction: column;
+}
+.threshold-input-container {
+  margin: 3px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  /* box-shadow: 0px 10px 15px 0px rgba(39, 39, 39, 0.15); */
+}
+.threshold-input-style {
+  width: 70px;
+  height: 35px;
+  color: black;
+  background-color: white;
+  border: solid;
+  border-width: 1px;
+  padding: 7px;
+  border-radius: 4px;
+  border-color: gray;
+  font-size: 15px;
+  margin-right: 3px;
+  text-align: center;
+  box-shadow: 0px 10px 15px 0px rgba(39, 39, 39, 0.15);
 }
